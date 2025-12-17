@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
-import { flavorlists } from "../constants";
+import { cards } from "../constants";
 
 const FlavorSlider = () => {
 	const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -68,7 +68,7 @@ const FlavorSlider = () => {
 	return (
 		<div ref={sliderRef} className="slider-wrapper">
 			<div className="flavors">
-				{flavorlists.map((flavor) => (
+				{cards.map((flavor: typeof cards[0]) => (
 					<div
 						key={flavor.name}
 						className={`relative z-30 lg:w-[50vw] w-96 lg:h-[70vh] md:w-[90vw] md:h-[50vh] h-80 flex-none ${flavor.rotation}`}
