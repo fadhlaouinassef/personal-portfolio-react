@@ -143,4 +143,27 @@ const cards = [
 	},
 ];
 
-export { skillCategories, experienceList, projectsList, educationList, nutrientLists, cards };
+const flavorlists = [
+	{
+		name: "Strawberry",
+		color: "red",
+		rotation: "md:rotate-[-8deg] rotate-0",
+	},
+	{
+		name: "Blueberry",
+		color: "blue",
+		rotation: "md:rotate-[8deg] rotate-0",
+	},
+	{
+		name: "Orange",
+		color: "orange",
+		rotation: "md:rotate-[-8deg] rotate-0",
+	},
+	{
+		name: "Chocolate",
+		color: "brown",
+		rotation: "md:rotate-[8deg] rotate-0",
+	},
+];
+
+export { skillCategories, experienceList, projectsList, educationList, nutrientLists, cards, flavorlists };
