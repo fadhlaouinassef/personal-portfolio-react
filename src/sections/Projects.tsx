@@ -1,6 +1,5 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import ClipPathTitle from "../components/ClipPathTitle";
 import { projectsList } from "../constants";
 
 const Projects = () => {
@@ -18,19 +17,16 @@ const Projects = () => {
 			.to(".projects-section .first-project", {
 				duration: 1,
 				opacity: 1,
-				clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
 				ease: "circ.out",
 			})
 			.to(".projects-section .second-project", {
 				duration: 1,
 				opacity: 1,
-				clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
 				ease: "circ.out",
 			})
 			.to(".projects-section .third-project", {
 				duration: 1,
 				opacity: 1,
-				clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
 				ease: "circ.out",
 			});
 	});
@@ -45,16 +41,11 @@ const Projects = () => {
 					</p>
 					<div className="mt-20 col-center space-y-12">
 						{projectsList.map((project, index) => (
-							<div key={project.title} className="w-full max-w-5xl">
-								<ClipPathTitle
-									title={project.title}
-									color="#faeade"
-									bg={index === 0 ? "#c88e64" : index === 1 ? "#7F3B2D" : "#FED775"}
-									className={index === 0 ? "first-project" : index === 1 ? "second-project" : "third-project"}
-									borderColor="#222123"
-									containerClass="md:text-6xl text-4xl font-bold uppercase leading-[9vw] tracking-[-.35vw]"
-								/>
-								<div className="mt-6 px-8 py-6 bg-white/20 backdrop-blur-sm rounded-lg shadow-lg">
+							<div 
+								key={project.title} 
+								className={`w-full max-w-5xl ${index === 0 ? "first-project" : index === 1 ? "second-project" : "third-project"} opacity-0`}
+							>
+								<div className="mt-6 px-8 py-6 bg-white/20 backdrop-blur-sm rounded-lg shadow-lg border-2 border-gray-200">
 									<div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
 										<h3 className="text-xl md:text-2xl font-bold text-primary">{project.title}</h3>
 										<span className="text-sm md:text-base text-gray-600 bg-gray-100 px-3 py-1 rounded-full">

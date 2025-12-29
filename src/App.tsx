@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
 import CustomCursor from "./components/CustomCursor";
+import ScrollProgress from "./components/ScrollProgress";
 import Hero from "./sections/Hero";
 
 const Projects = lazy(() => import("./sections/Projects"));
@@ -37,6 +38,7 @@ const App = () => {
 		<>
 			{isLoading && <Loader onComplete={handleLoadComplete} />}
 			<CustomCursor />
+			<ScrollProgress />
 			<main>
 				<Navbar />
 				<div id="smooth-wrapper">

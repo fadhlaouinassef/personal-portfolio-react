@@ -105,8 +105,8 @@ const Experience = () => {
 					<div className="w-full">
 						<div className="flex flex-col gap-8">
 							{experiences.map((exp, index) => (
-								<div key={index} className="relative flex-1 text-center w-full">
-									<div className="space-y-3 p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 shadow-sm hover:bg-white/20 transition-colors">
+								<div key={index} className="group relative flex-1 text-center w-full">
+									<div className="space-y-3 p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 shadow-sm hover:bg-white/20 hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
 										<div className="flex md:flex-row flex-col justify-between items-start gap-4">
 											<div className="text-left">
 												<p className="md:text-xl text-lg font-bold text-primary">{exp.title}</p>
@@ -122,6 +122,9 @@ const Experience = () => {
 										<p className="text-sm md:text-base font-paragraph text-balance leading-relaxed text-gray-800 text-left mt-4">
 											{exp.description}
 										</p>
+
+										{/* Decorative gradient bar */}
+										<div className="mt-6 h-1 w-full bg-gradient-to-r from-yellow-brown via-light-brown to-mid-brown rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 									</div>
 								</div>
 							))}

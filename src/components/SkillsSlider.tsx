@@ -76,7 +76,7 @@ const SkillsSlider = () => {
 						<img
 							src={`/images/${category.color}-bg.svg`}
 							alt={category.color}
-							className="absolute bottom-0"
+							className="absolute inset-0 w-full h-full object-cover"
 						/>
 
 						<div className="absolute inset-0 p-8 flex flex-col justify-center items-center text-center z-10">
