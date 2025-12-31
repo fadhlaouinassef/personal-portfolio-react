@@ -68,7 +68,7 @@ const Experience = () => {
 				loading="lazy"
 			/>
 			<img 
-				src="/images/Gemini_Generated_Image_ec201hec201hec20 (2).png" 
+				src="/images/Nassef.png" 
 				alt="nassef-profile" 
 				className="big-img opacity-10 grayscale-[20%] brightness-75"
 				loading="lazy"

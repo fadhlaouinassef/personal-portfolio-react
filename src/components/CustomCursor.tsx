@@ -125,7 +125,7 @@ const CustomCursor = () => {
     <>
       <div 
         ref={cursorRef}
-        className="custom-cursor fixed w-3 h-3 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="custom-cursor fixed w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{
           transform: 'translate(-50%, -50%)',
           opacity: 0
@@ -133,7 +133,7 @@ const CustomCursor = () => {
       />
       <div 
         ref={followerRef}
-        className="custom-cursor-follower fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40 mix-blend-difference"
+        className="custom-cursor-follower fixed w-8 h-8 border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
         style={{
           transform: 'translate(-50%, -50%)',
           opacity: 0

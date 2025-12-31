@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
+import CVViewer from "./components/CVViewer";
 import Hero from "./sections/Hero";
 
 const Projects = lazy(() => import("./sections/Projects"));
@@ -20,6 +21,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const App = () => {
 	const [isLoading, setIsLoading] = useState(true);
+	const [isCVOpen, setIsCVOpen] = useState(false);
 
 	useGSAP(() => {
 		if (!isLoading) {
@@ -39,8 +41,9 @@ const App = () => {
 			{isLoading && <Loader onComplete={handleLoadComplete} />}
 			<CustomCursor />
 			<ScrollProgress />
+			<CVViewer isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
 			<main>
-				<Navbar />
+				<Navbar onCVClick={() => setIsCVOpen(true)} />
 				<div id="smooth-wrapper">
 					<div id="smooth-content">
 						<Hero />

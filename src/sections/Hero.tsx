@@ -75,7 +75,7 @@ const Hero = () => {
 							/>
 						)}
 						<img
-							src="/images/Gemini_Generated_Image_ec201hec201hec20 (2).png"
+							src="/images/Nassef.png"
 							className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto brightness-95 contrast-110"
 							alt="nassef-profile"
 							fetchPriority="high"
@@ -90,7 +90,7 @@ const Hero = () => {
 							fetchPriority="high"
 						/>
 						<img
-							src="/images/Gemini_Generated_Image_ec201hec201hec20 (2).png"
+						src="/images/Nassef.png"
 							className="absolute bottom-0 right-20 object-auto max-h-full brightness-95 contrast-110 drop-shadow-lg"
 							alt="nassef-profile"
 							fetchPriority="high"
