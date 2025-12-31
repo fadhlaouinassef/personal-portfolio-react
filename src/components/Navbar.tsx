@@ -85,7 +85,7 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 						<div className="flex items-center gap-3">
 							<button
 								onClick={onCVClick}
-								className="px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 font-semibold"
+								className="px-5 py-2.5 bg-primary text-black rounded-lg hover:bg-primary/90 transition-all duration-300 font-semibold"
 							>
 								Mon CV
 							</button>
