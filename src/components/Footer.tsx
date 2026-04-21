@@ -7,10 +7,10 @@ const FooterSection = () => {
 				className="w-full object-cover -translate-y-1"
 			/>
 
-			<div className="2xl:h-[110dvh] relative md:pt-[20vh] pt-[10vh]">
+			<div className="relative md:pt-[14vh] pt-[9vh] pb-16">
 				<div className="overflow-hidden z-10">
 					<h1 className="general-title text-center text-milk py-5">
-						TRAVAILLONS ENSEMBLE
+						Construisons ensemble
 					</h1>
 				</div>
 
@@ -38,40 +38,44 @@ const FooterSection = () => {
 					</a>
 				</div>
 
-				<div className="mt-40 md:px-10 px-5 flex gap-10 md:flex-row flex-col justify-between text-milk font-paragraph md:text-lg font-medium">
+				<div className="mt-28 md:px-10 px-5 flex gap-10 md:flex-row flex-col justify-between text-milk font-paragraph md:text-lg font-medium">
 					<div className="flex items-start md:gap-16 gap-5">
 						<div>
-							<p className="font-bold mb-3">Compétences</p>
+							<p className="font-bold mb-3">Technologies</p>
 							<p>React.js</p>
-							<p>Node.js</p>
+							<p>Next.js</p>
+							<p>TypeScript</p>
+							<p>Spring Boot</p>
 							<p>Laravel</p>
-							<p>MySQL</p>
+							<p>PostgreSQL</p>
 						</div>
 						<div>
-							<p className="font-bold mb-3">Services</p>
+							<p className="font-bold mb-3">Domaines</p>
 							<p>Développement Web</p>
-							<p>Applications Mobile</p>
-							<p>Consultation</p>
+							<p>Architecture Full Stack</p>
+							<p>Microservices</p>
+							<p>Machine Learning</p>
 						</div>
 						<div>
 							<p className="font-bold mb-3">Contact</p>
-							<p>Kef Ouest, El Kef</p>
+							<p>Kef Ouest, Kef</p>
 							<p>Tunisie</p>
 							<p>+216 55 733 277</p>
+							<p>nassef.fadhlaoui@esprit.tn</p>
 						</div>
 					</div>
 
 					<div className="md:max-w-lg">
 						<p>
-							Prêt à collaborer sur votre prochain projet ? 
-							Contactez-moi pour discuter de vos besoins en développement.
+							Disponible pour des opportunités de stage, d'alternance ou de collaboration
+							autour de projets web et data à fort impact.
 						</p>
 						<div className="flex justify-between items-center border-b border-[#D9D9D9] py-5 md:mt-10">
 							<a 
 								href="mailto:nassef.fadhlaoui@esprit.tn"
 								className="w-full text-[#999999] hover:text-white transition-colors"
 							>
-								Envoyer un email
+								Discutons de votre projet
 							</a>
 							<img src="/images/arrow.svg" alt="arrow" />
 						</div>
@@ -79,10 +83,10 @@ const FooterSection = () => {
 				</div>
 
 				<div className="copyright-box">
-					<p>Copyright © 2025 Nassef Fadhlaoui - Tous droits réservés</p>
+					<p>Copyright © 2026 Nassef Fadhlaoui - Tous droits réservés</p>
 					<div className="flex items-center gap-7">
-						<p>Développé avec passion</p>
-						<p>Portfolio Personnel</p>
+						<p>Design et développement personnel</p>
+						<p>Portfolio Professionnel</p>
 					</div>
 				</div>
 			</div>

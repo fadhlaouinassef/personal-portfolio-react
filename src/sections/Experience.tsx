@@ -60,7 +60,7 @@ const Experience = () => {
 	});
 
 	return (
-		<section id="experience" className="experience-section">
+		<section id="experience" className="experience-section py-20 md:py-28">
 			<img
 				src="/images/slider-dip.png"
 				alt="background"
@@ -93,33 +93,24 @@ const Experience = () => {
 				</div>
 
 				<div className="md:w-3/4 w-full flex flex-col gap-12">
-					<div className="flex md:justify-end items-center translate-y-5">
-						<div className="md:max-w-xl max-w-md">
-							<p className="text-lg md:text-right text-balance font-paragraph">
-								Expériences diversifiées en développement web, de la conception 
-								à la réalisation de projets complets avec les dernières technologies.
-							</p>
-						</div>
-					</div>
-
 					<div className="w-full">
 						<div className="flex flex-col gap-8">
 							{experiences.map((exp, index) => (
 								<div key={index} className="group relative flex-1 text-center w-full">
-									<div className="space-y-3 p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 shadow-sm hover:bg-white/20 hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
+									<div className="space-y-3 p-6 bg-white/75 rounded-2xl backdrop-blur-sm border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] hover:scale-[1.015] transition-all duration-300">
 										<div className="flex md:flex-row flex-col justify-between items-start gap-4">
 											<div className="text-left">
-												<p className="md:text-xl text-lg font-bold text-primary">{exp.title}</p>
-												<p className="font-paragraph text-base font-semibold text-gray-700">{exp.company}</p>
+												<p className="md:text-xl text-lg font-bold text-[#2e2a33]">{exp.title}</p>
+												<p className="font-paragraph text-base font-semibold text-[#7f3b2d]">{exp.company}</p>
 											</div>
 											<div className="flex flex-col md:items-end items-start gap-2">
-												<p className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full inline-block">{exp.period}</p>
-												<span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm rounded-full font-medium">
+												<p className="text-sm text-[#5f5564] bg-[#f2e8d8] px-3 py-1 rounded-full inline-block">{exp.period}</p>
+												<span className="inline-block px-3 py-1 bg-[#7f3b2d]/15 text-[#7f3b2d] text-sm rounded-full font-medium">
 													{exp.type}
 												</span>
 											</div>
 										</div>
-										<p className="text-sm md:text-base font-paragraph text-balance leading-relaxed text-gray-800 text-left mt-4">
+										<p className="text-sm md:text-base font-paragraph text-balance leading-relaxed text-[#4f4656] text-left mt-4">
 											{exp.description}
 										</p>
 

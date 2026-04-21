@@ -46,14 +46,14 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 
 	return (
 		<div className="cv-overlay fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4">
-			<div className="cv-container bg-white rounded-lg shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col">
+			<div className="cv-container bg-[#f7f3ec] rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col border border-[#e7d9c8]">
 				{/* Header */}
-				<div className="flex justify-between items-center p-6 border-b border-gray-200">
-					<h2 className="text-2xl font-bold text-gray-800">Mon CV</h2>
+				<div className="flex justify-between items-center p-6 border-b border-[#e7d9c8]">
+					<h2 className="text-2xl font-bold text-[#2e2a33]">Mon CV</h2>
 					<div className="flex gap-3">
 						<button
 							onClick={handleDownload}
-							className="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2 font-medium"
+							className="px-6 py-2.5 bg-[#d4a05c] text-[#2e2a33] rounded-lg hover:bg-[#9c5c2f] hover:text-white transition-colors flex items-center gap-2 font-medium"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 						</button>
 						<button
 							onClick={onClose}
-							className="px-4 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+							className="px-4 py-2.5 bg-[#e9e1d4] text-[#4f4656] rounded-lg hover:bg-[#ddd2c1] transition-colors font-medium"
 						>
 							✕ Fermer
 						</button>
@@ -81,10 +81,10 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 				</div>
 
 				{/* PDF Viewer */}
-				<div className="flex-1 overflow-auto p-4">
+				<div className="flex-1 overflow-auto p-4 bg-[#fbf8f3]">
 					<iframe
 						src="/CV_NassefFadhlaoui.pdf"
-						className="w-full h-full rounded-lg border border-gray-300"
+						className="w-full h-full rounded-lg border border-[#ddd2c1]"
 						title="CV Nassef Fadhlaoui"
 					/>
 				</div>

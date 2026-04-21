@@ -15,6 +15,7 @@ const Projects = lazy(() => import("./sections/Projects"));
 const Skills = lazy(() => import("./sections/Skills"));
 const Message = lazy(() => import("./sections/Message"));
 const Experience = lazy(() => import("./sections/Experience"));
+const Certifications = lazy(() => import("./sections/Certifications"));
 const Education = lazy(() => import("./sections/Education"));
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -53,6 +54,7 @@ const App = () => {
 							<Experience />
 							<div>
 								<Projects />
+								<Certifications />
 								<Education />
 							</div>
 						</Suspense>
