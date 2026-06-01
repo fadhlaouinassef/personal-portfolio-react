@@ -11,75 +11,26 @@ const domains = [
 ];
 
 const skills = [
-  { name: "Django", icon: "django" },
-  { name: "Three.js", icon: "threejs" },
-  { name: "TensorFlow", icon: "tensorflow" },
-  { name: "Git", icon: "git" },
-  { name: "Python", icon: "python" },
-  { name: "JavaScript", icon: "javascript" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "C/C++", icon: "cpp" },
-  { name: "PHP", icon: "php" },
-  { name: "MySQL", icon: "mysql" }
+	{ name: ".NET", logo: ".net" },
+	{ name: "C/C++", logo: "c++" },
+	{ name: "Express", logo: "express" },
+	{ name: "Git", logo: "git" },
+	{ name: "Java", logo: "java" },
+	{ name: "JavaScript", logo: "js" },
+	{ name: "Laravel", logo: "laravel" },
+	{ name: "MongoDB", logo: "mongodb" },
+	{ name: "MySQL", logo: "mysql" },
+	{ name: "n8n", logo: "n8n" },
+	{ name: "Node.js", logo: "node" },
+	{ name: "PostgreSQL", logo: "postgresql" },
+	{ name: "Python", logo: "python" },
+	{ name: "React", logo: "react" },
+	{ name: "Spring Boot", logo: "springboot" },
+	{ name: "Symfony", logo: "symfony" },
+	{ name: "TensorFlow", logo: "tensorflow" },
+	{ name: "Three.js", logo: "threejs" },
+	{ name: "TypeScript", logo: "ts" }
 ];
-
-const skillIcons: Record<string, React.ReactNode> = {
-  django: (
-    <svg className="w-5 h-5 text-[#092e20]" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M11.67 2c-5.14 0-9.33 4.19-9.33 9.33s4.19 9.33 9.33 9.33c.84 0 1.66-.11 2.45-.33l-.53-1.92c-.62.16-1.26.25-1.92.25-4.05 0-7.33-3.28-7.33-7.33S7.62 4 11.67 4c2.81 0 5.25 1.58 6.47 3.89l1.83-.87C18.25 4.18 15.19 2 11.67 2zm6.27 7.02v2.79c0 .7-.14 1.25-.43 1.66-.29.4-.73.61-1.32.61-.59 0-1.02-.2-1.31-.61-.29-.41-.43-.96-.43-1.66V9.02h-1.92v2.79c0 1.24.34 2.21 1.01 2.92.67.71 1.55 1.06 2.65 1.06 1.1 0 1.98-.35 2.65-1.06.67-.71 1.01-1.68 1.01-2.92V9.02h-1.91zM9.47 9.02v4.86c0 1.24-.34 2.21-1.01 2.92-.67.71-1.55 1.06-2.65 1.06s-1.98-.35-2.65-1.06c-.67-.71-1.01-1.68-1.01-2.92V9.02h1.91v4.86c0 .7.14 1.25.43 1.66.29.4.73.61 1.32.61.59 0 1.02-.2 1.31-.61.29-.41.43-.96.43-1.66V9.02h-1.92z"/>
-    </svg>
-  ),
-  threejs: (
-    <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 19H5.5L12 6.5z"/>
-    </svg>
-  ),
-  tensorflow: (
-    <svg className="w-5 h-5 text-[#FF6F00]" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.5l6.5 3.6v7.2L12 18.9l-6.5-3.6V8.1L12 4.5z"/>
-    </svg>
-  ),
-  git: (
-    <svg className="w-5 h-5 text-[#F05032]" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.55 11.85L12.15.45c-.6-.6-1.5-.6-2.1 0L8.85 1.65l3.15 3.15c.5-.2 1.1-.1 1.5.3.4.4.5 1 .3 1.5l3.15 3.15c.5-.2 1.1-.1 1.5.3.6.6.6 1.5 0 2.1-.6.6-1.5.6-2.1 0-.4-.4-.5-1-.3-1.5l-3.15-3.15c-.2.2-.5.3-.8.3-.3 0-.6-.1-.8-.3L8.4 11.85c-.2-.2-.3-.5-.3-.8 0-.3.1-.6.3-.8l3.15-3.15-3.15-3.15-6.9 6.9c-.6.6-.6 1.5 0 2.1l11.4 11.4c.6.6 1.5.6 2.1 0l11.4-11.4c.7-.6.7-1.5.1-2.1z"/>
-    </svg>
-  ),
-  python: (
-    <svg className="w-5 h-5 text-[#3776AB]" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-1.5 3h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3c-.83 0-1.5-.67-1.5-1.5S9.67 5 10.5 5zm4.5 12h-6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5h6c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/>
-    </svg>
-  ),
-  javascript: (
-    <svg className="w-5 h-5 text-[#F7DF1E]" viewBox="0 0 24 24" fill="currentColor">
-      <rect width="24" height="24" rx="4"/>
-      <text x="5" y="17" fontFamily="sans-serif" fontWeight="900" fontSize="13" fill="black">JS</text>
-    </svg>
-  ),
-  typescript: (
-    <svg className="w-5 h-5 text-[#3178C6]" viewBox="0 0 24 24" fill="currentColor">
-      <rect width="24" height="24" rx="4"/>
-      <text x="5" y="17" fontFamily="sans-serif" fontWeight="900" fontSize="13" fill="white">TS</text>
-    </svg>
-  ),
-  cpp: (
-    <svg className="w-5 h-5 text-[#00599C]" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="12" r="10" fill="#00599C"/>
-      <text x="3.5" y="15" fontFamily="sans-serif" fontWeight="bold" fontSize="9" fill="white">C++</text>
-    </svg>
-  ),
-  php: (
-    <svg className="w-5 h-5 text-[#777BB4]" viewBox="0 0 24 24" fill="currentColor">
-      <ellipse cx="12" cy="12" rx="10" ry="6" fill="#777BB4"/>
-      <text x="6" y="15" fontFamily="sans-serif" fontWeight="bold" fontSize="9" fill="white">php</text>
-    </svg>
-  ),
-  mysql: (
-    <svg className="w-5 h-5 text-[#00758F]" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="12" r="10" fill="#00758F"/>
-      <text x="3.5" y="15" fontFamily="sans-serif" fontWeight="bold" fontSize="8" fill="white">SQL</text>
-    </svg>
-  )
-};
 
 const Hero = () => {
 	useGSAP(() => {
@@ -123,8 +74,8 @@ const Hero = () => {
 		});
 	});
 
-	const duplicatedDomains = [...domains, ...domains, ...domains];
-	const duplicatedSkills = [...skills, ...skills, ...skills];
+	const duplicatedDomains = [...domains, ...domains];
+	const duplicatedSkills = [...skills, ...skills];
 
 	return (
 		<section className="bg-main-bg">
@@ -191,7 +142,7 @@ const Hero = () => {
 				{/* Double Scrolling Marquee Component - BELOW Header */}
 				<div className="marquee-container-wrapper w-full flex flex-col gap-4 mt-4 z-20">
 					{/* Top Line: Domains scrolling left */}
-					<div className="w-full overflow-hidden flex select-none py-4 border-y border-[#e8d1bb]/40 bg-[#fff7ef]/70 backdrop-blur-sm">
+					<div className="w-full overflow-hidden flex select-none py-4 border-y border-[#e8d1bb]/40 bg-transparent">
 						<div className="marquee-left-scroll flex items-center gap-16 pr-16">
 							{duplicatedDomains.map((domain, idx) => (
 								<div key={`dom-1-${idx}`} className="flex items-center gap-16 text-[#1f1b1a]/10 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
@@ -211,11 +162,16 @@ const Hero = () => {
 					</div>
 
 					{/* Bottom Line: Skills scrolling right */}
-					<div className="w-full overflow-hidden flex select-none py-3 border-b border-[#e8d1bb]/40 bg-[#fff7ef]/70 backdrop-blur-sm">
+					<div className="w-full overflow-hidden flex select-none py-3 border-b border-[#e8d1bb]/40 bg-transparent">
 						<div className="marquee-right-scroll flex items-center gap-6 pr-6">
 							{duplicatedSkills.map((skill, idx) => (
 								<div key={`sk-1-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
-									{skillIcons[skill.icon]}
+									<img
+										src={`/technologies/${skill.logo}.webp`}
+										alt={`${skill.name} logo`}
+										className="w-5 h-5 object-contain"
+										loading="lazy"
+									/>
 									<span className="font-paragraph font-semibold text-[#1f1b1a] text-sm md:text-base">{skill.name}</span>
 								</div>
 							))}
@@ -223,7 +179,12 @@ const Hero = () => {
 						<div className="marquee-right-scroll flex items-center gap-6 pr-6" aria-hidden="true">
 							{duplicatedSkills.map((skill, idx) => (
 								<div key={`sk-2-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
-									{skillIcons[skill.icon]}
+									<img
+										src={`/technologies/${skill.logo}.webp`}
+										alt={`${skill.name} logo`}
+										className="w-5 h-5 object-contain"
+										loading="lazy"
+									/>
 									<span className="font-paragraph font-semibold text-[#1f1b1a] text-sm md:text-base">{skill.name}</span>
 								</div>
 							))}

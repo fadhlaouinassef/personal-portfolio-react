@@ -385,12 +385,22 @@ body::-webkit-scrollbar {
 	display: flex;
 	width: max-content;
 	animation: marqueeLeft 30s linear infinite;
+	will-change: transform;
+}
+
+.marquee-left-scroll:nth-child(2) {
+	animation-delay: -15s;
 }
 
 .marquee-right-scroll {
 	display: flex;
 	width: max-content;
 	animation: marqueeRight 30s linear infinite;
+	will-change: transform;
+}
+
+.marquee-right-scroll:nth-child(2) {
+	animation-delay: -15s;
 }
 
 /* Glassmorphism Card Style */
