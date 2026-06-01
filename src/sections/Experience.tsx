@@ -67,12 +67,6 @@ const Experience = () => {
 				className="w-full object-cover"
 				loading="lazy"
 			/>
-			<img 
-				src="/images/Nassef.png" 
-				alt="nassef-profile" 
-				className="big-img opacity-10 grayscale-[20%] brightness-75"
-				loading="lazy"
-			/>
 			<div className="flex md:flex-row flex-col md:px-10 px-5 mt-14 md:mt-0 gap-8">
 				<div className="md:w-1/4 w-full relative inline-block md:translate-y-20">
 					<div className="relative flex flex-col justify-center items-start gap-4 md:text-6xl text-4xl font-bold uppercase tracking-tight">

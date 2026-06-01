@@ -6,7 +6,7 @@ import { educationList } from "../constants";
 const Education = () => {
 	useGSAP(() => {
 		gsap.set(".education-section", {
-			marginTop: "-100vh",
+			marginTop: "-80vh",
 		});
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -51,11 +51,7 @@ const Education = () => {
 
 	return (
 		<section id="education" className="education-section">
-			<div className="absolute size-full flex flex-col items-center pt-[5vw]">
-				<h1 className="text-black first-title">Mon</h1>
-				<h1 className="text-light-brown sec-title">Parcours</h1>
-				<h1 className="text-black third-title">Académique</h1>
-			</div>
+			
 			<div className="pin-box">
 				{educationList.map((edu, index) => (
 					<div

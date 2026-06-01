@@ -55,7 +55,9 @@ const App = () => {
 							<div>
 								<Projects />
 								<Certifications />
-								<Education />
+								<div className="mt-24">
+									<Education />
+								</div>
 							</div>
 						</Suspense>
 						<Footer />
