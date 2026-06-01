@@ -129,38 +129,41 @@ const Hero = () => {
 	return (
 		<section className="bg-main-bg">
 			<div className="hero-container">
+				<div className="hero-grid absolute inset-0 pointer-events-none"></div>
+				<div className="hero-orb absolute -top-16 -left-24 w-72 h-72 rounded-full bg-[#e07d2c]/40"></div>
+				<div className="hero-orb absolute top-10 -right-10 w-80 h-80 rounded-full bg-[#9c5c2f]/30"></div>
 				{/* Header Card Layout */}
 				<div className="w-full max-w-6xl mx-auto px-4 md:px-6 relative z-10 mb-12">
-					<div className="hero-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 md:p-12">
+					<div className="hero-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 md:p-12 rounded-[2.5rem]">
 						{/* Left Column: Infos */}
 						<div className="lg:col-span-7 flex flex-col justify-center items-start text-left">
-							<div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#e07d2c]/10 text-[#e07d2c] rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-								<span className="w-2.5 h-2.5 rounded-full bg-[#e07d2c] animate-pulse"></span>
+							<div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1f1b1a] text-[#f6eadb] rounded-full text-[0.7rem] font-semibold uppercase tracking-[0.3em] mb-6">
+								<span className="w-2.5 h-2.5 rounded-full bg-[#f6eadb] animate-pulse"></span>
 								Disponible pour de nouvelles opportunités
 							</div>
 							
-							<h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-[#2e2a33] leading-tight mb-4 uppercase tracking-tight">
+							<h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-[#1f1b1a] leading-[0.9] mb-4 uppercase tracking-[0.08em]">
 								Nassef Fadhlaoui
 							</h1>
 							
-							<p className="text-[#e07d2c] font-paragraph text-xl md:text-2xl font-bold mb-6">
+							<p className="text-[#c86b2a] font-paragraph text-lg md:text-xl font-semibold mb-6 uppercase tracking-[0.2em]">
 								Développeur Full Stack & Étudiant Ingénieur
 							</p>
 							
-							<p className="font-paragraph text-[#5c5665] text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+							<p className="font-paragraph text-[#3e3430] text-base md:text-lg leading-relaxed mb-8 max-w-xl">
 								Étudiant ingénieur passionné par la création d'applications modernes et performantes, avec une solide expertise en développement web et génie logiciel.
 							</p>
 							
 							<div className="flex flex-wrap gap-4">
 								<a
 									href="#experience"
-									className="px-8 py-3.5 bg-[#d4a05c] hover:bg-[#9c5c2f] text-white hover:text-white rounded-full font-bold transition-all duration-300 shadow-md hover:shadow-lg text-sm md:text-base flex items-center justify-center"
+									className="px-8 py-3.5 bg-[#1f1b1a] hover:bg-[#c86b2a] text-[#f6eadb] rounded-full font-bold transition-all duration-300 shadow-[0_12px_30px_rgba(31,27,26,0.2)] text-sm md:text-base flex items-center justify-center"
 								>
 									Découvrir mon parcours
 								</a>
 								<a
 									href="mailto:nassef.fadhlaoui@esprit.tn"
-									className="px-8 py-3.5 border-2 border-[#2e2a33] hover:bg-[#2e2a33] hover:text-white text-[#2e2a33] rounded-full font-bold transition-all duration-300 text-sm md:text-base flex items-center justify-center"
+									className="px-8 py-3.5 border-2 border-[#1f1b1a] hover:bg-[#1f1b1a] hover:text-[#f6eadb] text-[#1f1b1a] rounded-full font-bold transition-all duration-300 text-sm md:text-base flex items-center justify-center"
 								>
 									Me contacter
 								</a>
@@ -169,10 +172,10 @@ const Hero = () => {
 
 						{/* Right Column: Image Frame */}
 						<div className="lg:col-span-5 flex justify-center items-center relative mt-6 lg:mt-0">
-							<div className="relative w-full max-w-sm aspect-square bg-[#fce7d2]/40 rounded-[2rem] border border-[#eadac6] overflow-hidden group shadow-lg flex justify-center items-end">
+							<div className="relative w-full max-w-sm aspect-square bg-[#f6eadb] rounded-[2.5rem] border border-[#e8d1bb] overflow-hidden group shadow-[0_20px_50px_rgba(52,35,25,0.2)] flex justify-center items-end">
 								{/* Decorative glowing background elements */}
-								<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-full bg-gradient-to-tr from-[#e07d2c]/20 to-[#d4a05c]/20 blur-xl opacity-60"></div>
-								<div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-[#fce7d2]/60 to-transparent z-0"></div>
+								<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-full bg-gradient-to-tr from-[#c86b2a]/25 to-[#d4a05c]/25 blur-2xl opacity-70"></div>
+								<div className="absolute inset-0 ring-1 ring-[#1f1b1a]/5 rounded-[2.5rem]"></div>
 								
 								<img
 									src="/images/Nassef.png"
@@ -188,40 +191,40 @@ const Hero = () => {
 				{/* Double Scrolling Marquee Component - BELOW Header */}
 				<div className="marquee-container-wrapper w-full flex flex-col gap-4 mt-4 z-20">
 					{/* Top Line: Domains scrolling left */}
-					<div className="w-full overflow-hidden flex select-none py-4 border-y border-[#eadac6]/20 bg-white/5 backdrop-blur-sm">
+					<div className="w-full overflow-hidden flex select-none py-4 border-y border-[#e8d1bb]/40 bg-[#fff7ef]/70 backdrop-blur-sm">
 						<div className="marquee-left-scroll flex items-center gap-16 pr-16">
 							{duplicatedDomains.map((domain, idx) => (
-								<div key={`dom-1-${idx}`} className="flex items-center gap-16 text-[#2e2a33]/8 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
+								<div key={`dom-1-${idx}`} className="flex items-center gap-16 text-[#1f1b1a]/10 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
 									<span>{domain}</span>
-									<span className="text-[#e07d2c]/20 text-lg md:text-2xl">•</span>
+									<span className="text-[#c86b2a]/25 text-lg md:text-2xl">•</span>
 								</div>
 							))}
 						</div>
 						<div className="marquee-left-scroll flex items-center gap-16 pr-16" aria-hidden="true">
 							{duplicatedDomains.map((domain, idx) => (
-								<div key={`dom-2-${idx}`} className="flex items-center gap-16 text-[#2e2a33]/8 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
+								<div key={`dom-2-${idx}`} className="flex items-center gap-16 text-[#1f1b1a]/10 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
 									<span>{domain}</span>
-									<span className="text-[#e07d2c]/20 text-lg md:text-2xl">•</span>
+									<span className="text-[#c86b2a]/25 text-lg md:text-2xl">•</span>
 								</div>
 							))}
 						</div>
 					</div>
 
 					{/* Bottom Line: Skills scrolling right */}
-					<div className="w-full overflow-hidden flex select-none py-3 border-b border-[#eadac6]/20 bg-white/5 backdrop-blur-sm">
+					<div className="w-full overflow-hidden flex select-none py-3 border-b border-[#e8d1bb]/40 bg-[#fff7ef]/70 backdrop-blur-sm">
 						<div className="marquee-right-scroll flex items-center gap-6 pr-6">
 							{duplicatedSkills.map((skill, idx) => (
-								<div key={`sk-1-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_4px_12px_rgba(224,125,44,0.06)] border border-[#eadac6]/40 flex-none">
+								<div key={`sk-1-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
 									{skillIcons[skill.icon]}
-									<span className="font-paragraph font-bold text-[#2e2a33] text-sm md:text-base">{skill.name}</span>
+									<span className="font-paragraph font-semibold text-[#1f1b1a] text-sm md:text-base">{skill.name}</span>
 								</div>
 							))}
 						</div>
 						<div className="marquee-right-scroll flex items-center gap-6 pr-6" aria-hidden="true">
 							{duplicatedSkills.map((skill, idx) => (
-								<div key={`sk-2-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_4px_12px_rgba(224,125,44,0.06)] border border-[#eadac6]/40 flex-none">
+								<div key={`sk-2-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
 									{skillIcons[skill.icon]}
-									<span className="font-paragraph font-bold text-[#2e2a33] text-sm md:text-base">{skill.name}</span>
+									<span className="font-paragraph font-semibold text-[#1f1b1a] text-sm md:text-base">{skill.name}</span>
 								</div>
 							))}
 						</div>
