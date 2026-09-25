@@ -2,22 +2,9 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import { experienceList } from "../constants";
 
 const Experience = () => {
-	const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-	const [experiences, setExperiences] = useState(experienceList);
-	
-	useEffect(() => {
-		if (isMobile) {
-			setExperiences(experienceList.slice(0, 2));
-		} else {
-			setExperiences(experienceList);
-		}
-	}, [isMobile]);
-
 	useGSAP(() => {
 		const titleSplit = SplitText.create(".experience-title", {
 			type: "chars",
@@ -89,8 +76,8 @@ const Experience = () => {
 				<div className="md:w-3/4 w-full flex flex-col gap-12">
 					<div className="w-full">
 						<div className="flex flex-col gap-8">
-							{experiences.map((exp, index) => (
-								<div key={index} className="group relative flex-1 text-center w-full">
+							{experienceList.map((exp) => (
+								<div key={exp.title} className="group relative flex-1 text-center w-full">
 									<div className="space-y-3 p-6 bg-white/75 rounded-2xl backdrop-blur-sm border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] hover:scale-[1.015] transition-all duration-300">
 										<div className="flex md:flex-row flex-col justify-between items-start gap-4">
 											<div className="text-left">

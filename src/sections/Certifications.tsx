@@ -23,7 +23,7 @@ const Certifications = () => {
 				<div className="text-center max-w-3xl mx-auto">
 					<p className="text-sm uppercase tracking-[0.2em] text-[#7f3b2d]">Certifications</p>
 					<h2 className="mt-3 text-4xl md:text-6xl font-bold uppercase leading-[1.05] text-[#2e2a33]">
-						Validation de competences
+						Validation de compétences
 					</h2>
 				</div>
 
