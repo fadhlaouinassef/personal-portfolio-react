@@ -50,7 +50,7 @@ const Projects = () => {
 								</>
 							}
 							key={project.title}
-							className={`project-card rounded-2xl border border-[#e7d9c8] bg-white/80 backdrop-blur-sm shadow-[0_12px_35px_rgba(34,33,35,0.08)] p-6 md:p-7 ${index % 3 === 0 ? "md:col-span-2" : ""}`}
+							className={`project-card rounded-2xl border border-[#e7d9c8] bg-white/80 shadow-[0_12px_35px_rgba(34,33,35,0.08)] p-6 md:p-7 ${index % 3 === 0 ? "md:col-span-2" : ""}`}
 						>
 							<div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
 								<h3 className="text-xl md:text-2xl font-bold text-[#2e2a33]">{project.title}</h3>

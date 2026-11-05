@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ParticlePortrait from "../components/ParticlePortrait";
 import Typewriter from "../components/Typewriter";
+import { useRef } from "react";
 
 const domains = [
   "DATA SCIENCE & NLP",
@@ -35,7 +36,14 @@ const skills = [
 ];
 
 const Hero = () => {
+	const sectionRef = useRef<HTMLElement>(null);
 	useGSAP(() => {
+		const section = sectionRef.current;
+		if (!section) return;
+		const observer = new IntersectionObserver(([entry]) => {
+			section.classList.toggle("hero-offscreen", !entry.isIntersecting);
+		});
+		observer.observe(section);
 		const tl = gsap.timeline({
 			delay: 0.2,
 		});
@@ -74,13 +82,14 @@ const Hero = () => {
 			yPercent: 12,
 			ease: "power1.inOut",
 		});
-	});
+		return () => observer.disconnect();
+	}, { scope: sectionRef });
 
 	const duplicatedDomains = [...domains, ...domains];
 	const duplicatedSkills = [...skills, ...skills];
 
 	return (
-		<section className="bg-main-bg">
+		<section ref={sectionRef} className="bg-main-bg">
 			<div className="hero-container">
 				<div className="hero-grid absolute inset-0 pointer-events-none"></div>
 				<div className="hero-orb absolute -top-16 -left-24 w-72 h-72 rounded-full bg-[#e07d2c]/40"></div>
@@ -140,14 +149,6 @@ const Hero = () => {
 								</div>
 							))}
 						</div>
-						<div className="marquee-left-scroll flex items-center gap-16 pr-16" aria-hidden="true">
-							{duplicatedDomains.map((domain, idx) => (
-								<div key={`dom-2-${idx}`} className="flex items-center gap-16 text-[#1f1b1a]/10 font-bold uppercase tracking-[0.2em] text-2xl md:text-4xl lg:text-5xl font-sans">
-									<span>{domain}</span>
-									<span className="text-[#c86b2a]/25 text-lg md:text-2xl">•</span>
-								</div>
-							))}
-						</div>
 					</div>
 
 					{/* Bottom Line: Skills scrolling right */}
@@ -155,19 +156,6 @@ const Hero = () => {
 						<div className="marquee-right-scroll flex items-center gap-6 pr-6">
 							{duplicatedSkills.map((skill, idx) => (
 								<div key={`sk-1-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
-									<img
-										src={`/technologies/${skill.logo}.webp`}
-										alt={`${skill.name} logo`}
-										className="w-5 h-5 object-contain"
-										loading="lazy"
-									/>
-									<span className="font-paragraph font-semibold text-[#1f1b1a] text-sm md:text-base">{skill.name}</span>
-								</div>
-							))}
-						</div>
-						<div className="marquee-right-scroll flex items-center gap-6 pr-6" aria-hidden="true">
-							{duplicatedSkills.map((skill, idx) => (
-								<div key={`sk-2-${idx}`} className="flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-[0_6px_18px_rgba(31,27,26,0.08)] border border-[#eadac6]/40 flex-none">
 									<img
 										src={`/technologies/${skill.logo}.webp`}
 										alt={`${skill.name} logo`}

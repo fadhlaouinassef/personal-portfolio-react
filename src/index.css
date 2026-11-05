@@ -7,28 +7,11 @@
 	src: url("/fonts/ProximaNova-Regular.otf");
 }
 
-/* Custom Cursor Styles */
-* {
-  cursor: none !important;
+/* Native cursors also cover lazily mounted cards and modal controls. */
+:where(a[href], button, [role="button"], summary, label[for], [data-hover]):not(:disabled):not([aria-disabled="true"]) {
+	cursor: pointer;
 }
-
-.custom-cursor {
-  will-change: transform;
-}
-
-.custom-cursor-follower {
-  will-change: transform;
-}
-
-/* Performance Optimizations */
-.hero-content,
-.hero-text-scroll,
-.msg-text-scroll,
-.skills-text-scroll,
-.experience-text-scroll,
-.nutrition-text-scroll {
-	will-change: transform, opacity, clip-path;
-}
+:where(button:disabled, [aria-disabled="true"]) { cursor: not-allowed; }
 
 @theme {
 	--color-black: #222123;
@@ -335,15 +318,6 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 768px) {
-	* {
-		cursor: auto !important;
-	}
-
-	.custom-cursor,
-	.custom-cursor-follower {
-		display: none;
-	}
-
 	.experience-section .big-img {
 		opacity: 0.06;
 		height: 52vh;
@@ -400,8 +374,6 @@ body::-webkit-scrollbar {
 }
 .detail-dialog[open] { display: flex; align-items: center; justify-content: center; }
 .detail-dialog::backdrop { background: transparent; }
-.detail-dialog, .detail-dialog * { cursor: auto !important; }
-.detail-dialog button { cursor: pointer !important; }
 .detail-panel {
 	position: relative;
 	width: min(100%, 760px);
@@ -469,10 +441,6 @@ body::-webkit-scrollbar {
 	will-change: transform;
 }
 
-.marquee-left-scroll:nth-child(2) {
-	animation-delay: -15s;
-}
-
 .marquee-right-scroll {
 	display: flex;
 	width: max-content;
@@ -480,8 +448,10 @@ body::-webkit-scrollbar {
 	will-change: transform;
 }
 
-.marquee-right-scroll:nth-child(2) {
-	animation-delay: -15s;
+.marquee-left-scroll, .marquee-right-scroll { flex-shrink: 0; }
+.hero-offscreen .marquee-left-scroll, .hero-offscreen .marquee-right-scroll {
+	animation-play-state: paused;
+	will-change: auto;
 }
 
 .skills-showcase { position: relative; overflow: hidden; padding: 64px 20px; }
@@ -493,11 +463,11 @@ body::-webkit-scrollbar {
 	.skills-cards { grid-template-columns: minmax(0, 1fr); }
 }
 @media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
-	.skills-showcase { height: 100dvh; min-height: 640px; padding: 0; }
+	.skills-showcase { height: calc(100dvh - var(--skills-nav-height, 0px)); min-height: 0; padding: 0; }
 	.skills-track { flex-direction: row; align-items: center; width: max-content; height: 100%; gap: 0; padding-right: 6vw; }
 	.skills-heading { width: 48vw; flex: none; padding: 40px; }
-	.skills-cards { display: flex; gap: 4vw; padding: 48px 0; }
-	.skills-category { width: 38vw; height: min(70vh, 650px); min-height: 400px; flex: none; }
+	.skills-cards { display: flex; align-items: center; gap: 4vw; padding: 32px 0; }
+	.skills-category { width: 38vw; height: min(70dvh, calc(100dvh - var(--skills-nav-height, 0px) - 64px), 650px); min-height: 0; flex: none; }
 }
 .hero-typewriter { min-height: 6.2em; overflow-wrap: anywhere; }
 @media (min-width: 768px) { .hero-typewriter { min-height: 4.7em; } }
@@ -521,17 +491,15 @@ body::-webkit-scrollbar {
 
 /* Glassmorphism Card Style */
 .hero-card {
-	background: rgba(255, 255, 255, 0.45);
-	backdrop-filter: blur(24px);
-	-webkit-backdrop-filter: blur(24px);
+	background: rgba(255, 250, 243, 0.92);
 	border: 1px solid rgba(234, 218, 198, 0.6);
 	box-shadow: 0 30px 70px rgba(224, 125, 44, 0.08);
 	border-radius: 2.5rem;
-	transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .hero-card:hover {
-	background: rgba(255, 255, 255, 0.55);
+	background: rgba(255, 250, 243, 0.98);
 	border-color: rgba(224, 125, 44, 0.3);
 	box-shadow: 0 40px 90px rgba(224, 125, 44, 0.12);
 }

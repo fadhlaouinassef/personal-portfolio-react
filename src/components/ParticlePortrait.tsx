@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const portraits = ["/images/Nassef.png", "/images/file_00000000d2648246b288a916b6c5fa61 (2).png"];
-const columns = 72;
+const columns = 48;
 const count = columns * columns;
 
 // Adapt the supplied image/globe morph to Canvas so it also works without WebGPU.
@@ -22,6 +23,7 @@ export default function ParticlePortrait() {
 		const media = window.matchMedia("(prefers-reduced-motion: reduce)");
 		let disposed = false;
 		let visible = false;
+		let scrolling = ScrollTrigger.isScrolling();
 		let current = 0;
 		let samples: Uint8ClampedArray[] = [];
 		let timer: ReturnType<typeof setTimeout>;
@@ -65,7 +67,7 @@ export default function ParticlePortrait() {
 
 		const schedule = () => {
 			clearTimeout(timer);
-			if (visible && !document.hidden && !media.matches && !timeline?.isActive()) timer = setTimeout(change, 6000);
+			if (visible && !scrolling && !document.hidden && !media.matches && !timeline?.isActive()) timer = setTimeout(change, 6000);
 		};
 		function change() {
 			if (samples.length !== 2 || (timeline && timeline.progress() < 1)) return;
@@ -92,7 +94,7 @@ export default function ParticlePortrait() {
 		changeRef.current = change;
 		const resize = new ResizeObserver(() => {
 			size = stage.clientWidth;
-			const ratio = Math.min(window.devicePixelRatio || 1, 2);
+			const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
 			canvas.width = Math.round(size * ratio);
 			canvas.height = Math.round(size * ratio);
 			context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -100,11 +102,15 @@ export default function ParticlePortrait() {
 		});
 		resize.observe(stage);
 		const updatePlayback = () => {
-			if (!visible || document.hidden) { clearTimeout(timer); timeline?.pause(); }
+			if (!visible || scrolling || document.hidden) { clearTimeout(timer); timeline?.pause(); }
 			else { timeline?.resume(); schedule(); }
 		};
 		const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updatePlayback(); }, { threshold: 0.15 });
 		observer.observe(stage);
+		const scrollStart = () => { scrolling = true; updatePlayback(); };
+		const scrollEnd = () => { scrolling = false; updatePlayback(); };
+		ScrollTrigger.addEventListener("scrollStart", scrollStart);
+		ScrollTrigger.addEventListener("scrollEnd", scrollEnd);
 		const reduceMotion = () => { if (media.matches) timeline?.progress(1); schedule(); };
 		media.addEventListener("change", reduceMotion);
 		document.addEventListener("visibilitychange", updatePlayback);
@@ -127,6 +133,8 @@ export default function ParticlePortrait() {
 			resize.disconnect(); observer.disconnect();
 			media.removeEventListener("change", reduceMotion);
 			document.removeEventListener("visibilitychange", updatePlayback);
+			ScrollTrigger.removeEventListener("scrollStart", scrollStart);
+			ScrollTrigger.removeEventListener("scrollEnd", scrollEnd);
 			changeRef.current = () => {};
 		};
 	}, []);

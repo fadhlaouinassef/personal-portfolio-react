@@ -40,7 +40,7 @@ const Certifications = () => {
 								</dl>
 							}
 							key={cert.title}
-							className="certification-card rounded-2xl border border-[#e7d9c8] bg-white/80 backdrop-blur-sm p-6 md:p-7 shadow-[0_12px_30px_rgba(34,33,35,0.08)]"
+							className="certification-card rounded-2xl border border-[#e7d9c8] bg-white/80 p-6 md:p-7 shadow-[0_12px_30px_rgba(34,33,35,0.08)]"
 						>
 							<p className="text-xs uppercase tracking-[0.16em] text-[#9c5c2f]">{cert.year}</p>
 							<h3 className="mt-2 text-2xl font-bold text-[#2e2a33]">{cert.title}</h3>

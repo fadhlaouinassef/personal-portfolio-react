@@ -89,7 +89,7 @@ const Experience = () => {
 												<div><dt>Type d’expérience</dt><dd>{exp.type}</dd></div>
 											</dl>
 										}
-										className="space-y-3 p-6 bg-white/75 rounded-2xl backdrop-blur-sm border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] transition-shadow duration-300"
+										className="space-y-3 p-6 bg-white/75 rounded-2xl border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] transition-shadow duration-300"
 									>
 										<div className="flex md:flex-row flex-col justify-between items-start gap-4">
 											<div className="text-left">

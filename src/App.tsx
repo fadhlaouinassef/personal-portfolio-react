@@ -6,7 +6,6 @@ import { useState, lazy, Suspense } from "react";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
-import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
 import CVViewer from "./components/CVViewer";
 import Hero from "./sections/Hero";
@@ -27,8 +26,8 @@ const App = () => {
 	useGSAP(() => {
 		if (!isLoading) {
 			const smoother = ScrollSmoother.create({
-				smooth: 1.5, // Reduced from 3 for better performance
-				effects: true,
+				smooth: 0.8,
+				effects: false,
 			});
 			let disposed = false;
 			void document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
@@ -43,7 +42,6 @@ const App = () => {
 	return (
 		<>
 			{isLoading && <Loader onComplete={handleLoadComplete} />}
-			<CustomCursor />
 			<ScrollProgress />
 			<CVViewer isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
 			<main>

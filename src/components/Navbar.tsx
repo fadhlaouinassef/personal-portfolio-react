@@ -13,7 +13,8 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 		const handleScroll = () => {
 			setScrolled(window.scrollY > 50);
 		};
-		window.addEventListener("scroll", handleScroll);
+		handleScroll();
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
@@ -29,9 +30,9 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 
 	return (
 		<nav
-			className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+			className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
 				scrolled
-					? "bg-[#f4efe7]/90 backdrop-blur-xl shadow-[0_8px_28px_rgba(34,33,35,0.12)]"
+					? "bg-[#f4efe7]/95 shadow-[0_8px_28px_rgba(34,33,35,0.12)]"
 					: "bg-transparent"
 			}`}
 		>
