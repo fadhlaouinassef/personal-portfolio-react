@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ExpandableCard from "../components/ExpandableCard";
 import { certificationsList } from "../constants";
 
 const Certifications = () => {
@@ -29,7 +30,15 @@ const Certifications = () => {
 
 				<div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
 					{certificationsList.map((cert) => (
-						<div
+						<ExpandableCard
+							title={cert.title}
+							category="Certification"
+							details={
+								<dl className="detail-facts">
+									<div><dt>Organisme de certification</dt><dd>{cert.issuer}</dd></div>
+									<div><dt>Année d’obtention</dt><dd>{cert.year}</dd></div>
+								</dl>
+							}
 							key={cert.title}
 							className="certification-card rounded-2xl border border-[#e7d9c8] bg-white/80 backdrop-blur-sm p-6 md:p-7 shadow-[0_12px_30px_rgba(34,33,35,0.08)]"
 						>
@@ -37,7 +46,7 @@ const Certifications = () => {
 							<h3 className="mt-2 text-2xl font-bold text-[#2e2a33]">{cert.title}</h3>
 							<p className="mt-3 font-paragraph text-[#5a4f42]">Organisme: {cert.issuer}</p>
 							<div className="mt-5 h-1 w-full rounded-full bg-gradient-to-r from-[#7f3b2d] via-[#d4a05c] to-[#9c5c2f]" />
-						</div>
+						</ExpandableCard>
 					))}
 				</div>
 			</div>

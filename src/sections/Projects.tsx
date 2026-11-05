@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ExpandableCard from "../components/ExpandableCard";
 import { projectsList } from "../constants";
 
 const Projects = () => {
@@ -37,7 +38,17 @@ const Projects = () => {
 
 				<div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 					{projectsList.map((project, index) => (
-						<div
+						<ExpandableCard
+							title={project.title}
+							category="Projet"
+							details={
+								<>
+									<h3 className="detail-heading">Technologies utilisées</h3>
+									<div className="detail-tags">
+										{project.technologies.split(", ").map((technology) => <span key={technology}>{technology}</span>)}
+									</div>
+								</>
+							}
 							key={project.title}
 							className={`project-card rounded-2xl border border-[#e7d9c8] bg-white/80 backdrop-blur-sm shadow-[0_12px_35px_rgba(34,33,35,0.08)] p-6 md:p-7 ${index % 3 === 0 ? "md:col-span-2" : ""}`}
 						>
@@ -50,11 +61,11 @@ const Projects = () => {
 							<p className="text-sm md:text-base text-[#7f3b2d] font-semibold mb-4">
 								{project.technologies}
 							</p>
-							<p className="text-sm md:text-base text-[#4f4656] font-paragraph leading-relaxed">
+							<p className="text-sm md:text-base text-[#4f4656] font-paragraph leading-relaxed card-summary-description">
 								{project.description}
 							</p>
 							<div className="mt-5 h-1 w-full rounded-full bg-gradient-to-r from-[#7f3b2d] via-[#d4a05c] to-[#9c5c2f] opacity-70" />
-						</div>
+						</ExpandableCard>
 					))}
 				</div>
 			</div>

@@ -1,5 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ParticlePortrait from "../components/ParticlePortrait";
+import Typewriter from "../components/Typewriter";
 
 const domains = [
   "DATA SCIENCE & NLP",
@@ -97,9 +99,7 @@ const Hero = () => {
 								Nassef Fadhlaoui
 							</h1>
 							
-							<p className="text-[#c86b2a] font-paragraph text-lg md:text-xl font-semibold mb-6 uppercase tracking-[0.2em]">
-								Développeur Full Stack & Étudiant Ingénieur
-							</p>
+							<Typewriter />
 							
 							<p className="font-paragraph text-[#3e3430] text-base md:text-lg leading-relaxed mb-8 max-w-xl">
 								Étudiant ingénieur passionné par la création d'applications modernes et performantes, avec une solide expertise en développement web et génie logiciel.
@@ -123,18 +123,7 @@ const Hero = () => {
 
 						{/* Right Column: Image Frame */}
 						<div className="lg:col-span-5 flex justify-center items-center relative mt-6 lg:mt-0">
-							<div className="relative w-full max-w-sm aspect-square bg-[#f6eadb] rounded-[2.5rem] border border-[#e8d1bb] overflow-hidden group shadow-[0_20px_50px_rgba(52,35,25,0.2)] flex justify-center items-end">
-								{/* Decorative glowing background elements */}
-								<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-full bg-gradient-to-tr from-[#c86b2a]/25 to-[#d4a05c]/25 blur-2xl opacity-70"></div>
-								<div className="absolute inset-0 ring-1 ring-[#1f1b1a]/5 rounded-[2.5rem]"></div>
-								
-								<img
-									src="/images/Nassef.png"
-									className="relative z-10 w-full h-full object-contain max-h-[90%] scale-[1.08] origin-bottom transition-transform duration-500 group-hover:scale-[1.12]"
-									alt="nassef-profile"
-									fetchPriority="high"
-								/>
-							</div>
+							<ParticlePortrait />
 						</div>
 					</div>
 				</div>

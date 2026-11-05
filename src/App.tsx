@@ -26,10 +26,13 @@ const App = () => {
 
 	useGSAP(() => {
 		if (!isLoading) {
-			ScrollSmoother.create({
+			const smoother = ScrollSmoother.create({
 				smooth: 1.5, // Reduced from 3 for better performance
 				effects: true,
 			});
+			let disposed = false;
+			void document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
+			return () => { disposed = true; smoother.kill(); };
 		}
 	}, [isLoading]);
 

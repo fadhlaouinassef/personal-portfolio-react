@@ -2,6 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import ExpandableCard from "../components/ExpandableCard";
 import { experienceList } from "../constants";
 
 const Experience = () => {
@@ -78,7 +79,18 @@ const Experience = () => {
 						<div className="flex flex-col gap-8">
 							{experienceList.map((exp) => (
 								<div key={exp.title} className="group relative flex-1 text-center w-full">
-									<div className="space-y-3 p-6 bg-white/75 rounded-2xl backdrop-blur-sm border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] hover:scale-[1.015] transition-all duration-300">
+									<ExpandableCard
+										title={exp.title}
+										category="Expérience professionnelle"
+										details={
+											<dl className="detail-facts">
+												<div><dt>Entreprise / établissement</dt><dd>{exp.company}</dd></div>
+												<div><dt>Période</dt><dd>{exp.period}</dd></div>
+												<div><dt>Type d’expérience</dt><dd>{exp.type}</dd></div>
+											</dl>
+										}
+										className="space-y-3 p-6 bg-white/75 rounded-2xl backdrop-blur-sm border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] transition-shadow duration-300"
+									>
 										<div className="flex md:flex-row flex-col justify-between items-start gap-4">
 											<div className="text-left">
 												<p className="md:text-xl text-lg font-bold text-[#2e2a33]">{exp.title}</p>
@@ -91,13 +103,13 @@ const Experience = () => {
 												</span>
 											</div>
 										</div>
-										<p className="text-sm md:text-base font-paragraph text-balance leading-relaxed text-[#4f4656] text-left mt-4">
+										<p className="text-sm md:text-base font-paragraph text-balance leading-relaxed text-[#4f4656] text-left mt-4 card-summary-description">
 											{exp.description}
 										</p>
 
 										{/* Decorative gradient bar */}
 										<div className="mt-6 h-1 w-full bg-gradient-to-r from-yellow-brown via-light-brown to-mid-brown rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-									</div>
+									</ExpandableCard>
 								</div>
 							))}
 						</div>

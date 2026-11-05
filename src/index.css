@@ -353,6 +353,87 @@ body::-webkit-scrollbar {
 .spin-circle {
 	animation: spin 20s linear infinite;
 }
+
+/* Expand a portfolio card into a modal outside the smooth-scroll container. */
+.expandable-card {
+	position: relative;
+	padding-bottom: 4rem;
+	text-align: left;
+}
+.expandable-card .card-summary-description {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.detail-trigger {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	border-radius: inherit;
+	text-align: left;
+}
+.detail-trigger > span {
+	position: absolute;
+	bottom: 1.25rem;
+	left: 1.5rem;
+	font: 600 0.8rem var(--font-paragraph);
+	color: #7f3b2d;
+}
+.detail-trigger > span > span { display: inline-block; margin-left: 0.5rem; transition: transform 0.2s; }
+.detail-trigger:hover > span > span { transform: translate(3px, -3px); }
+.detail-trigger:focus-visible, .detail-close:focus-visible { outline: 3px solid #9c5c2f; outline-offset: 4px; }
+.detail-dialog {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	max-width: none;
+	height: 100dvh;
+	max-height: none;
+	margin: 0;
+	padding: 24px;
+	border: 0;
+	background: rgb(31 29 34 / calc(0.7 * var(--detail-backdrop-opacity, 1)));
+	color: #2e2a33;
+	overflow: hidden;
+	overscroll-behavior: contain;
+}
+.detail-dialog[open] { display: flex; align-items: center; justify-content: center; }
+.detail-dialog::backdrop { background: transparent; }
+.detail-dialog, .detail-dialog * { cursor: auto !important; }
+.detail-dialog button { cursor: pointer !important; }
+.detail-panel {
+	position: relative;
+	width: min(100%, 760px);
+	max-height: calc(100dvh - 48px);
+	padding: clamp(24px, 4vw, 40px);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	border: 1px solid #e7d9c8;
+	border-radius: 24px;
+	background: linear-gradient(145deg, #fffcf7, #f4eadc);
+	box-shadow: 0 30px 100px #1f1d2240;
+	text-align: left;
+}
+.detail-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.detail-toolbar > span { color: #7f3b2d; font: 700 0.75rem var(--font-paragraph); text-transform: uppercase; letter-spacing: 0.12em; }
+.detail-close { flex-shrink: 0; width: 44px; height: 44px; border: 1px solid #e7d9c8; border-radius: 50%; background: #efe6d8; font: 28px/1 var(--font-paragraph); }
+.detail-close:hover { background: #e7d9c8; }
+.detail-summary .card-summary-description { line-height: 1.8; margin-top: 24px; }
+.detail-extra { border-top: 1px solid #e7d9c8; padding-top: 24px; margin-top: 24px; font-family: var(--font-paragraph); }
+.detail-heading { font-size: 0.8rem; font-weight: 700; color: #7f3b2d; margin-bottom: 12px; }
+.detail-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.detail-tags span { padding: 8px 14px; border-radius: 999px; background: #7f3b2d0d; border: 1px solid #7f3b2d22; font-size: 0.85rem; }
+.detail-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.detail-facts dt { font-size: 0.75rem; color: #7f3b2d; margin-bottom: 6px; }
+.detail-facts dd { font-size: 0.9rem; font-weight: 600; }
+@media (max-width: 600px) {
+	.detail-dialog { padding: 12px; }
+	.detail-panel { max-height: calc(100dvh - 24px); border-radius: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.detail-trigger > span > span { transition: none; }
+}
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -401,6 +482,41 @@ body::-webkit-scrollbar {
 
 .marquee-right-scroll:nth-child(2) {
 	animation-delay: -15s;
+}
+
+.skills-showcase { position: relative; overflow: hidden; padding: 64px 20px; }
+.skills-track { display: flex; flex-direction: column; gap: 40px; }
+.skills-heading { display: flex; align-items: center; justify-content: center; padding: 20px 0; }
+.skills-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.skills-category { position: relative; min-height: 350px; overflow: hidden; border-radius: 32px; box-shadow: 0 16px 40px #34231918; }
+@media (max-width: 600px) {
+	.skills-cards { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+	.skills-showcase { height: 100dvh; min-height: 640px; padding: 0; }
+	.skills-track { flex-direction: row; align-items: center; width: max-content; height: 100%; gap: 0; padding-right: 6vw; }
+	.skills-heading { width: 48vw; flex: none; padding: 40px; }
+	.skills-cards { display: flex; gap: 4vw; padding: 48px 0; }
+	.skills-category { width: 38vw; height: min(70vh, 650px); min-height: 400px; flex: none; }
+}
+.hero-typewriter { min-height: 6.2em; overflow-wrap: anywhere; }
+@media (min-width: 768px) { .hero-typewriter { min-height: 4.7em; } }
+.typewriter-caret { display: inline-block; margin-left: 3px; font-weight: 400; animation: caret-blink 0.85s step-end infinite; }
+@keyframes caret-blink { 50% { opacity: 0; } }
+.portrait-container { width: 100%; max-width: 384px; }
+.particle-portrait { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 2.5rem; border: 1px solid #e8d1bb; background: #f6eadb; box-shadow: 0 20px 50px #34231933; }
+.portrait-photo, .portrait-particles { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.portrait-particles { opacity: 0; pointer-events: none; }
+.portrait-switch { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: inherit; }
+.portrait-switch > span { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); white-space: nowrap; padding: 9px 14px; border-radius: 999px; color: #fff; background: #1f1b1abf; font: 500 11px var(--font-paragraph); backdrop-filter: blur(8px); }
+.portrait-switch:focus-visible { outline: 4px solid #c86b2a; outline-offset: -6px; }
+.portrait-switch:disabled { visibility: hidden; }
+.portrait-pagination { display: flex; justify-content: center; gap: 7px; margin-top: 16px; }
+.portrait-pagination span { width: 6px; height: 6px; border-radius: 999px; background: #9c5c2f40; transition: width 0.3s; }
+.portrait-pagination span.active { width: 24px; background: #9c5c2f; }
+@media (prefers-reduced-motion: reduce) {
+	.typewriter-caret { animation: none; }
+	.portrait-pagination span { transition: none; }
 }
 
 /* Glassmorphism Card Style */
