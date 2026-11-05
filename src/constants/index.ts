@@ -45,7 +45,7 @@ const projectsList = [
   },
   {
     title: "DeepSkyn",
-    technologies: "Next.js, TypeScript, PostgreSQL",
+    technologies: "Next.js, TypeScript, Tailwind CSS, n8n, PostgreSQL",
     year: "Janvier - Mai 2026",
     description: "Plateforme web d'analyse de la peau et de recommandation de produits skincare, avec modèles d'analyse en TypeScript et gestion des données avec PostgreSQL."
   },
@@ -57,7 +57,7 @@ const projectsList = [
   },
   {
     title: "Microservices Parapharmacie",
-    technologies: "React.js, Spring Boot",
+    technologies: "React.js, Spring Boot, Tailwind CSS",
     year: "Janvier - Avril 2026",
     description: "Application de gestion de parapharmacie organisée en architecture microservices."
   },
@@ -93,8 +93,26 @@ const educationList = [
 ];
 
 const certificationsList = [
-  { title: "Hashgraph Certification", issuer: "Hedera", year: "2025" },
-  { title: "Applications of AI for Anomaly Detection", issuer: "NVIDIA", year: "2025" },
+  {
+    title: "Hashgraph Certification",
+    issuer: "Hedera",
+    year: "2025",
+    logo: "/images/HederaLogo.png",
+    description: "Formation au développement d’applications décentralisées sur le réseau Hedera Hashgraph. Le programme aborde les fondements du Web3, l’architecture du réseau, les comptes et les transactions, ainsi que l’utilisation des SDK Hedera. Les exercices pratiques portent sur le consensus, la création de tokens et de NFT, les smart contracts et l’intégration de portefeuilles dans des dApps.",
+    skills: ["Web3", "Hedera SDK", "Consensus", "Tokens & NFT", "Smart contracts", "dApps"],
+    sourceUrl: "https://hashgraphdev.com/courses/hashgraph-developer-course",
+    sourceLabel: "Programme officiel · The Hashgraph Association",
+  },
+  {
+    title: "Applications of AI for Anomaly Detection",
+    issuer: "NVIDIA",
+    year: "2025",
+    logo: "/images/NvidiaLogo.png",
+    description: "Formation pratique du NVIDIA Deep Learning Institute consacrée à la détection d’anomalies dans de grands jeux de données, à travers le cas des intrusions réseau. Le programme compare des approches supervisées et non supervisées et met en œuvre trois techniques : XGBoost accéléré, les autoencodeurs et les réseaux antagonistes génératifs (GAN). Il présente notamment les outils RAPIDS et Keras pour construire et comparer ces solutions.",
+    skills: ["Détection d’anomalies", "Machine learning", "XGBoost", "Autoencodeurs", "GAN", "RAPIDS", "Keras"],
+    sourceUrl: "https://www.nvidia.com/en-us/deep-learning-ai/education.md/",
+    sourceLabel: "Programme officiel · NVIDIA Deep Learning Institute",
+  },
 ];
 
 const languagesList = ["Arabe", "Français", "Anglais"];

@@ -34,15 +34,38 @@ const Certifications = () => {
 							title={cert.title}
 							category="Certification"
 							details={
-								<dl className="detail-facts">
+								<>
+								<h3 className="detail-heading">À propos de la certification</h3>
+								<p className="text-sm md:text-base leading-relaxed text-[#4f4656]">{cert.description}</p>
+								<h3 className="detail-heading mt-6">Compétences abordées</h3>
+								<div className="detail-tags">
+									{cert.skills.map((skill) => <span key={skill}>{skill}</span>)}
+								</div>
+								<dl className="detail-facts mt-6">
 									<div><dt>Organisme de certification</dt><dd>{cert.issuer}</dd></div>
 									<div><dt>Année d’obtention</dt><dd>{cert.year}</dd></div>
 								</dl>
+								<a href={cert.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block text-sm text-[#7f3b2d] underline underline-offset-4 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4">
+									{cert.sourceLabel} <span aria-hidden="true">↗</span>
+								</a>
+								</>
 							}
 							key={cert.title}
 							className="certification-card rounded-2xl border border-[#e7d9c8] bg-white/80 p-6 md:p-7 shadow-[0_12px_30px_rgba(34,33,35,0.08)]"
 						>
-							<p className="text-xs uppercase tracking-[0.16em] text-[#9c5c2f]">{cert.year}</p>
+							<div className="flex items-center justify-between gap-4">
+								<div className="flex h-20 w-32 shrink-0 items-center justify-center rounded-xl border border-[#e7d9c8] bg-white p-3">
+									<img
+										src={cert.logo}
+										alt={`Logo ${cert.issuer}`}
+										width={104}
+										height={56}
+										loading="lazy"
+										className="h-full w-full object-contain"
+									/>
+								</div>
+								<p className="text-xs uppercase tracking-[0.16em] text-[#9c5c2f]">{cert.year}</p>
+							</div>
 							<h3 className="mt-2 text-2xl font-bold text-[#2e2a33]">{cert.title}</h3>
 							<p className="mt-3 font-paragraph text-[#5a4f42]">Organisme: {cert.issuer}</p>
 							<div className="mt-5 h-1 w-full rounded-full bg-gradient-to-r from-[#7f3b2d] via-[#d4a05c] to-[#9c5c2f]" />
