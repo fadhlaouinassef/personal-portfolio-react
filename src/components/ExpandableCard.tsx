@@ -1,3 +1,4 @@
+import { useLanguage } from "../i18n";
 import { useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
@@ -12,6 +13,7 @@ interface ExpandableCardProps {
 }
 
 export default function ExpandableCard({ title, category, className, children, details }: ExpandableCardProps) {
+	const { t } = useLanguage();
 	const [isOpen, setIsOpen] = useState(false);
 	const sourceRef = useRef<HTMLDivElement>(null);
 	const triggerRef = useRef<HTMLButtonElement>(null);
@@ -84,8 +86,8 @@ export default function ExpandableCard({ title, category, className, children, d
 		<>
 			<div ref={sourceRef} className={`expandable-card ${className}`} style={{ visibility: isOpen ? "hidden" : undefined }}>
 				{children}
-				<button ref={triggerRef} type="button" className="detail-trigger" aria-label={`Voir les détails : ${title}`} aria-haspopup="dialog" aria-expanded={isOpen} onClick={() => setIsOpen(true)}>
-					<span>Voir les détails <span aria-hidden="true">↗</span></span>
+				<button ref={triggerRef} type="button" className="detail-trigger" aria-label={`${t("Voir les détails")} : ${title}`} aria-haspopup="dialog" aria-expanded={isOpen} onClick={() => setIsOpen(true)}>
+					<span>{t("Voir les détails")}<span aria-hidden="true">↗</span></span>
 				</button>
 			</div>
 			{isOpen && createPortal(
@@ -95,7 +97,7 @@ export default function ExpandableCard({ title, category, className, children, d
 					<div ref={panelRef} className="detail-panel">
 						<div className="detail-toolbar">
 							<span>{category}</span>
-							<button type="button" className="detail-close" aria-label="Fermer les détails" onClick={close} autoFocus>×</button>
+							<button type="button" className="detail-close" aria-label={t("Fermer les détails")} onClick={close} autoFocus>×</button>
 						</div>
 						<h2 id={titleId} className="sr-only">{title}</h2>
 						<div className="detail-summary">{children}</div>

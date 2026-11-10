@@ -1,13 +1,19 @@
+import { translate } from "../i18n/translations";
+import { useLanguage } from "../i18n";
 import { useEffect, useState } from "react";
 
-const roles = [
+const rolesFr = [
 	"Développeur Full Stack & Étudiant Ingénieur",
 	"Passionné d’intelligence artificielle",
 	"Créateur d’applications web modernes",
 	"Explorateur Data Science & Machine Learning",
 ];
 
+const localizedRoles = { fr: rolesFr, en: rolesFr.map(translate) };
+
 export default function Typewriter() {
+	const { language } = useLanguage();
+	const roles = localizedRoles[language];
 	const [text, setText] = useState(roles[0]);
 	useEffect(() => {
 		const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -33,7 +39,7 @@ export default function Typewriter() {
 		start();
 		media.addEventListener("change", start);
 		return () => { clearTimeout(timer); media.removeEventListener("change", start); };
-	}, []);
+	}, [roles]);
 	return (
 		<p className="hero-typewriter text-[#c86b2a] font-paragraph text-lg md:text-xl font-semibold mb-6 uppercase tracking-[0.2em]">
 			<span className="sr-only">{roles.join(". ")}</span>

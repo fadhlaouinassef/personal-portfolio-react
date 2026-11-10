@@ -1,3 +1,4 @@
+import { useLanguage } from "./i18n";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -20,6 +21,7 @@ const Education = lazy(() => import("./sections/Education"));
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const App = () => {
+	const { t, language } = useLanguage();
 	const [isLoading, setIsLoading] = useState(true);
 	const [isCVOpen, setIsCVOpen] = useState(false);
 
@@ -49,10 +51,10 @@ const App = () => {
 				<div id="smooth-wrapper">
 					<div id="smooth-content">
 						<Hero />
-						<Suspense fallback={<div className="h-screen w-full flex items-center justify-center">Loading...</div>}>
-							<Message />
+						<Suspense fallback={<div className="h-screen w-full flex items-center justify-center">{t("Loading...")}</div>}>
+							<Message key={`message-${language}`} />
 							<Skills />
-							<Experience />
+							<Experience key={`experience-${language}`} />
 							<div>
 								<Projects />
 								<Certifications />

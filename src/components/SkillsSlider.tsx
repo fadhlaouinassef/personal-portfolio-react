@@ -1,6 +1,8 @@
-import { skillCategories } from "../constants";
+import { usePortfolio } from "../i18n/usePortfolio";
 
-const SkillsSlider = () => (
+const SkillsSlider = () => {
+	const { skillCategories } = usePortfolio();
+	return (
 	<div className="skills-cards">
 		{skillCategories.map((category) => (
 			<article key={category.name} className="skills-category">
@@ -17,5 +19,6 @@ const SkillsSlider = () => (
 		))}
 	</div>
 );
+};
 
 export default SkillsSlider;

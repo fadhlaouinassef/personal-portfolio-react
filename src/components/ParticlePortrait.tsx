@@ -1,3 +1,4 @@
+import { useLanguage } from "../i18n";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +9,7 @@ const count = columns * columns;
 
 // Adapt the supplied image/globe morph to Canvas so it also works without WebGPU.
 export default function ParticlePortrait() {
+	const { t } = useLanguage();
 	const stageRef = useRef<HTMLDivElement>(null);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const changeRef = useRef<() => void>(() => {});
@@ -142,10 +144,10 @@ export default function ParticlePortrait() {
 	return (
 		<div className="portrait-container">
 			<div ref={stageRef} className="particle-portrait">
-				{portraits.map((src, index) => <img key={src} src={src} alt={index === active ? "Portrait de Nassef Fadhlaoui" : ""} aria-hidden={index !== active} className="portrait-photo" style={{ opacity: index === active ? 1 : 0 }} fetchPriority={index === 0 ? "high" : "auto"} />)}
+				{portraits.map((src, index) => <img key={src} src={src} alt={index === active ? t("Portrait de Nassef Fadhlaoui") : ""} aria-hidden={index !== active} className="portrait-photo" style={{ opacity: index === active ? 1 : 0 }} fetchPriority={index === 0 ? "high" : "auto"} />)}
 				<canvas ref={canvasRef} className="portrait-particles" aria-hidden="true" />
-				<button type="button" disabled={!ready} className="portrait-switch" aria-label="Passer à l’autre portrait avec une transition de particules" onClick={() => changeRef.current()}>
-					<span>Changer de portrait <span aria-hidden="true">↻</span></span>
+				<button type="button" disabled={!ready} className="portrait-switch" aria-label={t("Passer à l’autre portrait avec une transition de particules")} onClick={() => changeRef.current()}>
+					<span>{t("Changer de portrait")}<span aria-hidden="true">↻</span></span>
 				</button>
 			</div>
 			<div className="portrait-pagination" aria-hidden="true"><span className={active === 0 ? "active" : ""} /><span className={active === 1 ? "active" : ""} /></div>

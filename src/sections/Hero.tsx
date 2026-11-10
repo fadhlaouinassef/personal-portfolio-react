@@ -1,10 +1,11 @@
+import { useLanguage } from "../i18n";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ParticlePortrait from "../components/ParticlePortrait";
 import Typewriter from "../components/Typewriter";
 import { useRef } from "react";
 
-const domains = [
+const domainsFr = [
   "DATA SCIENCE & NLP",
   "COMPUTER VISION",
   "AI ENGINEER",
@@ -36,6 +37,8 @@ const skills = [
 ];
 
 const Hero = () => {
+	const { t } = useLanguage();
+	const domains = domainsFr.map(t);
 	const sectionRef = useRef<HTMLElement>(null);
 	useGSAP(() => {
 		const section = sectionRef.current;
@@ -100,9 +103,7 @@ const Hero = () => {
 						{/* Left Column: Infos */}
 						<div className="lg:col-span-7 flex flex-col justify-center items-start text-left">
 							<div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1f1b1a] text-[#f6eadb] rounded-full text-[0.7rem] font-semibold uppercase tracking-[0.3em] mb-6">
-								<span className="w-2.5 h-2.5 rounded-full bg-[#f6eadb] animate-pulse"></span>
-								Disponible pour de nouvelles opportunités
-							</div>
+								<span className="w-2.5 h-2.5 rounded-full bg-[#f6eadb] animate-pulse"></span>{t("Disponible pour de nouvelles opportunités")}</div>
 							
 							<h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-[#1f1b1a] leading-[0.9] mb-4 uppercase tracking-[0.08em]">
 								Nassef Fadhlaoui
@@ -110,23 +111,17 @@ const Hero = () => {
 							
 							<Typewriter />
 							
-							<p className="font-paragraph text-[#3e3430] text-base md:text-lg leading-relaxed mb-8 max-w-xl">
-								Étudiant ingénieur passionné par la création d'applications modernes et performantes, avec une solide expertise en développement web et génie logiciel.
-							</p>
+							<p className="font-paragraph text-[#3e3430] text-base md:text-lg leading-relaxed mb-8 max-w-xl">{t("Étudiant ingénieur passionné par la création d'applications modernes et performantes, avec une solide expertise en développement web et génie logiciel.")}</p>
 							
 							<div className="flex flex-wrap gap-4">
 								<a
 									href="#experience"
 									className="px-8 py-3.5 bg-[#1f1b1a] hover:bg-[#c86b2a] text-[#f6eadb] rounded-full font-bold transition-all duration-300 shadow-[0_12px_30px_rgba(31,27,26,0.2)] text-sm md:text-base flex items-center justify-center"
-								>
-									Découvrir mon parcours
-								</a>
+								>{t("Découvrir mon parcours")}</a>
 								<a
 									href="mailto:nassef.fadhlaoui@esprit.tn"
 									className="px-8 py-3.5 border-2 border-[#1f1b1a] hover:bg-[#1f1b1a] hover:text-[#f6eadb] text-[#1f1b1a] rounded-full font-bold transition-all duration-300 text-sm md:text-base flex items-center justify-center"
-								>
-									Me contacter
-								</a>
+								>{t("Me contacter")}</a>
 							</div>
 						</div>
 

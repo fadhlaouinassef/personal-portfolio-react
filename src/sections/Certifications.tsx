@@ -1,9 +1,12 @@
+import { useLanguage } from "../i18n";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ExpandableCard from "../components/ExpandableCard";
-import { certificationsList } from "../constants";
+import { usePortfolio } from "../i18n/usePortfolio";
 
 const Certifications = () => {
+	const { t } = useLanguage();
+	const { certificationsList } = usePortfolio();
 	useGSAP(() => {
 		gsap.from(".certification-card", {
 			opacity: 0,
@@ -23,9 +26,7 @@ const Certifications = () => {
 			<div className="max-w-6xl mx-auto px-5 md:px-10">
 				<div className="text-center max-w-3xl mx-auto">
 					<p className="text-sm uppercase tracking-[0.2em] text-[#7f3b2d]">Certifications</p>
-					<h2 className="mt-3 text-4xl md:text-6xl font-bold uppercase leading-[1.05] text-[#2e2a33]">
-						Validation de compétences
-					</h2>
+					<h2 className="mt-3 text-4xl md:text-6xl font-bold uppercase leading-[1.05] text-[#2e2a33]">{t("Validation de compétences")}</h2>
 				</div>
 
 				<div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -35,15 +36,15 @@ const Certifications = () => {
 							category="Certification"
 							details={
 								<>
-								<h3 className="detail-heading">À propos de la certification</h3>
+								<h3 className="detail-heading">{t("À propos de la certification")}</h3>
 								<p className="text-sm md:text-base leading-relaxed text-[#4f4656]">{cert.description}</p>
-								<h3 className="detail-heading mt-6">Compétences abordées</h3>
+								<h3 className="detail-heading mt-6">{t("Compétences abordées")}</h3>
 								<div className="detail-tags">
 									{cert.skills.map((skill) => <span key={skill}>{skill}</span>)}
 								</div>
 								<dl className="detail-facts mt-6">
-									<div><dt>Organisme de certification</dt><dd>{cert.issuer}</dd></div>
-									<div><dt>Année d’obtention</dt><dd>{cert.year}</dd></div>
+									<div><dt>{t("Organisme de certification")}</dt><dd>{cert.issuer}</dd></div>
+									<div><dt>{t("Année d’obtention")}</dt><dd>{cert.year}</dd></div>
 								</dl>
 								<a href={cert.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block text-sm text-[#7f3b2d] underline underline-offset-4 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4">
 									{cert.sourceLabel} <span aria-hidden="true">↗</span>
@@ -67,7 +68,7 @@ const Certifications = () => {
 								<p className="text-xs uppercase tracking-[0.16em] text-[#9c5c2f]">{cert.year}</p>
 							</div>
 							<h3 className="mt-2 text-2xl font-bold text-[#2e2a33]">{cert.title}</h3>
-							<p className="mt-3 font-paragraph text-[#5a4f42]">Organisme: {cert.issuer}</p>
+							<p className="mt-3 font-paragraph text-[#5a4f42]">{t("Organisme:")} {cert.issuer}</p>
 							<div className="mt-5 h-1 w-full rounded-full bg-gradient-to-r from-[#7f3b2d] via-[#d4a05c] to-[#9c5c2f]" />
 						</ExpandableCard>
 					))}

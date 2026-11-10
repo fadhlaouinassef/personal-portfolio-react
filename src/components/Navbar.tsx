@@ -1,11 +1,14 @@
+import { useLanguage } from "../i18n";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
+import LanguageSwitch from "./LanguageSwitch";
 
 interface NavbarProps {
 	onCVClick?: () => void;
 }
 
 const Navbar = ({ onCVClick }: NavbarProps) => {
+	const { t } = useLanguage();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
@@ -44,35 +47,27 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 					</div>
 
 					{/* Desktop Menu */}
-					<div className="hidden lg:flex items-center gap-8">
-						<div className="flex items-center gap-6">
+					<div className="hidden xl:flex items-center gap-4">
+						<div className="flex items-center gap-4">
 							<a
 								href="#about"
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
-							>
-								À propos
-								<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
+							>{t("À propos")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#skills"
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
-							>
-								Compétences
-								<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
+							>{t("Compétences")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#experience"
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
-							>
-								Expérience
-								<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
+							>{t("Expérience")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#projects"
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
-							>
-								Projets
-								<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
+							>{t("Projets")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#certifications"
@@ -84,19 +79,16 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 							<a
 								href="#education"
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
-							>
-								Formation
-								<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
+							>{t("Formation")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 						</div>
 
 						<div className="flex items-center gap-3">
+							<LanguageSwitch />
 							<button
 								onClick={onCVClick}
 								className="px-5 py-2.5 bg-[#d4a05c] text-[#2e2a33] rounded-lg hover:bg-[#9c5c2f] hover:text-white transition-all duration-300 font-semibold"
-							>
-								Mon CV
-							</button>
+							>{t("Mon CV")}</button>
 							<a
 								href="mailto:nassef.fadhlaoui@esprit.tn"
 								className="px-5 py-2.5 border-2 border-[#2e2a33] text-[#2e2a33] rounded-lg hover:bg-[#2e2a33] hover:text-white transition-all duration-300 font-semibold"
@@ -107,10 +99,14 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 					</div>
 
 					{/* Mobile Menu Button */}
+					<div className="xl:hidden flex items-center gap-2">
+					<LanguageSwitch />
 					<button
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
-						className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg bg-[#9c5c2f]/10 hover:bg-[#9c5c2f]/20 transition-colors"
-						aria-label="Toggle menu"
+						className="relative w-10 h-10 flex items-center justify-center rounded-lg bg-[#9c5c2f]/10 hover:bg-[#9c5c2f]/20 transition-colors"
+						aria-label={t("Ouvrir ou fermer le menu")}
+						aria-expanded={isMenuOpen}
+						aria-controls="mobile-menu"
 					>
 						<div className="flex flex-col gap-1.5">
 							<span
@@ -130,40 +126,33 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 							></span>
 						</div>
 					</button>
+					</div>
 				</div>
 
 				{/* Mobile Menu */}
 				{isMenuOpen && (
-					<div className="lg:hidden mt-6 pb-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-[#e7d9c8]">
+					<div id="mobile-menu" className="xl:hidden mt-6 pb-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-[#e7d9c8]">
 						<div className="flex flex-col space-y-4">
 							<a
 								href="#about"
 								onClick={() => setIsMenuOpen(false)}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
-							>
-								À propos
-							</a>
+							>{t("À propos")}</a>
 							<a
 								href="#skills"
 								onClick={() => setIsMenuOpen(false)}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
-							>
-								Compétences
-							</a>
+							>{t("Compétences")}</a>
 							<a
 								href="#experience"
 								onClick={() => setIsMenuOpen(false)}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
-							>
-								Expérience
-							</a>
+							>{t("Expérience")}</a>
 							<a
 								href="#projects"
 								onClick={() => setIsMenuOpen(false)}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
-							>
-								Projets
-							</a>
+							>{t("Projets")}</a>
 							<a
 								href="#certifications"
 								onClick={() => setIsMenuOpen(false)}
@@ -175,9 +164,7 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 								href="#education"
 								onClick={() => setIsMenuOpen(false)}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
-							>
-								Formation
-							</a>
+							>{t("Formation")}</a>
 							
 							<div className="pt-4 border-t border-[#e7d9c8] space-y-3">
 								<button
@@ -186,9 +173,7 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 										setIsMenuOpen(false);
 									}}
 									className="mobile-menu-item w-full px-5 py-3 bg-[#d4a05c] text-[#2e2a33] rounded-lg hover:bg-[#9c5c2f] hover:text-white transition-all duration-300 font-semibold"
-								>
-									Mon CV
-								</button>
+								>{t("Mon CV")}</button>
 								<a
 									href="mailto:nassef.fadhlaoui@esprit.tn"
 									className="mobile-menu-item block text-center px-5 py-3 border-2 border-[#2e2a33] text-[#2e2a33] rounded-lg hover:bg-[#2e2a33] hover:text-white transition-all duration-300 font-semibold"

@@ -1,9 +1,12 @@
+import { useLanguage } from "../i18n";
 /** biome-ignore-all lint/style/noNonNullAssertion: ANIMATION */
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { educationList } from "../constants";
+import { usePortfolio } from "../i18n/usePortfolio";
 
 const Education = () => {
+	const { t } = useLanguage();
+	const { educationList } = usePortfolio();
 	useGSAP(() => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -65,7 +68,7 @@ const Education = () => {
 								<p className="text-sm text-gray-500">{edu.location}</p>
 								<div className="mt-4 p-3 bg-primary/10 rounded">
 									<p className="text-sm text-primary font-medium">
-										{index === 0 ? "Formation d'ingénieur en cours" : "Diplôme obtenu avec mention"}
+										{index === 0 ? t("Formation d'ingénieur en cours") : t("Diplôme obtenu avec mention")}
 									</p>
 								</div>
 							</div>
@@ -76,12 +79,12 @@ const Education = () => {
 				<div className="edu-card translate-y-[2%] rotate-[1deg]">
 					<div className="size-full bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg shadow-lg flex flex-col justify-center">
 						<div className="text-center space-y-4">
-							<h3 className="text-2xl font-bold text-blue-700">Langues</h3>
+							<h3 className="text-2xl font-bold text-blue-700">{t("Langues")}</h3>
 							<div className="space-y-2">
-								<p className="text-gray-700"><strong>Arabe:</strong> Langue maternelle</p>
-								<p className="text-gray-700"><strong>Français:</strong> Courant</p>
-								<p className="text-gray-700"><strong>Anglais:</strong> Intermédiaire</p>
-								<p className="text-gray-700"><strong>Allemand:</strong> Notions</p>
+								<p className="text-gray-700"><strong>{t("Arabe:")}</strong> {t("Langue maternelle")}</p>
+								<p className="text-gray-700"><strong>{t("Français:")}</strong> {t("Courant")}</p>
+								<p className="text-gray-700"><strong>{t("Anglais:")}</strong> {t("Intermédiaire")}</p>
+								<p className="text-gray-700"><strong>{t("Allemand:")}</strong> {t("Notions")}</p>
 							</div>
 						</div>
 					</div>

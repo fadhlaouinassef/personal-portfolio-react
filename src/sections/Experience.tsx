@@ -1,11 +1,14 @@
+import { useLanguage } from "../i18n";
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: ANIMATION */
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import ExpandableCard from "../components/ExpandableCard";
-import { experienceList } from "../constants";
+import { usePortfolio } from "../i18n/usePortfolio";
 
 const Experience = () => {
+	const { t } = useLanguage();
+	const { experienceList } = usePortfolio();
 	useGSAP(() => {
 		const titleSplit = SplitText.create(".experience-title", {
 			type: "chars",
@@ -59,7 +62,7 @@ const Experience = () => {
 				<div className="md:w-1/4 w-full relative inline-block md:translate-y-20">
 					<div className="relative flex flex-col justify-center items-start gap-4 md:text-6xl text-4xl font-bold uppercase tracking-tight">
 						<div className="overflow-hidden">
-							<h1 className="experience-title">Mon parcours</h1>
+							<h1 className="experience-title">{t("Mon parcours")}</h1>
 						</div>
 						<div
 							style={{
@@ -68,7 +71,7 @@ const Experience = () => {
 							className="experience-text-scroll"
 						>
 							<div className="bg-yellow-brown pb-2 md:pt-0 pt-2 md:px-4 px-2 inline-block">
-								<h2 className="text-milk-yellow">Professionnel</h2>
+								<h2 className="text-milk-yellow">{t("Professionnel")}</h2>
 							</div>
 						</div>
 					</div>
@@ -81,12 +84,12 @@ const Experience = () => {
 								<div key={exp.title} className="group relative flex-1 text-center w-full">
 									<ExpandableCard
 										title={exp.title}
-										category="Expérience professionnelle"
+										category={t("Expérience professionnelle")}
 										details={
 											<dl className="detail-facts">
-												<div><dt>Entreprise / établissement</dt><dd>{exp.company}</dd></div>
-												<div><dt>Période</dt><dd>{exp.period}</dd></div>
-												<div><dt>Type d’expérience</dt><dd>{exp.type}</dd></div>
+												<div><dt>{t("Entreprise / établissement")}</dt><dd>{exp.company}</dd></div>
+												<div><dt>{t("Période")}</dt><dd>{exp.period}</dd></div>
+												<div><dt>{t("Type d’expérience")}</dt><dd>{exp.type}</dd></div>
 											</dl>
 										}
 										className="space-y-3 p-6 bg-white/75 rounded-2xl border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] transition-shadow duration-300"

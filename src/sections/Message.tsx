@@ -1,8 +1,10 @@
+import { useLanguage } from "../i18n";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 
 const Message = () => {
+	const { t } = useLanguage();
 	useGSAP(() => {
 		const firstMsgSplit = SplitText.create(".first-message", {
 			type: "words",
@@ -67,27 +69,20 @@ const Message = () => {
 			<div className="container mx-auto flex-center py-28 relative">
 				<div className="size-full">
 					<div className="msg-wrapper">
-						<h1 className="first-message">Passionné par l'innovation et la</h1>
+						<h1 className="first-message">{t("Passionné par l'innovation et la")}</h1>
 						<div className="msg-text-scroll">
 							<div
 								style={{ clipPath: "polygon(0, 0,0 0, 0 100%, 0% 100%)" }}
 								className="bg-light-brown md:pb-5 pb-3 px-5"
 							>
-								<h2 className="text-red-brown">Technologie</h2>
+								<h2 className="text-red-brown">{t("Technologie")}</h2>
 							</div>
 						</div>
-						<h1 className="second-message">
-							je crée des solutions modernes et performantes.
-						</h1>
+						<h1 className="second-message">{t("je crée des solutions modernes et performantes.")}</h1>
 					</div>
 					<div className="flex-center md:mt-20 mt-10">
 						<div className="max-w-2xl px-10 flex-center overflow-hidden">
-							<p>
-								Étudiant en informatique passionné par la création d'applications modernes et performantes, 
-								avec une solide base en génie logiciel et développement web. Je souhaite continuer à développer 
-								mes compétences dans des environnements innovants et collaboratifs, en utilisant les dernières 
-								technologies pour créer des solutions impactantes.
-							</p>
+							<p>{t("Étudiant en informatique passionné par la création d'applications modernes et performantes, avec une solide base en génie logiciel et développement web. Je souhaite continuer à développer mes compétences dans des environnements innovants et collaboratifs, en utilisant les dernières technologies pour créer des solutions impactantes.")}</p>
 						</div>
 					</div>
 				</div>

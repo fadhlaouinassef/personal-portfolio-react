@@ -1,3 +1,4 @@
+import { useLanguage } from "../i18n";
 import { useEffect } from "react";
 import gsap from "gsap";
 
@@ -7,6 +8,7 @@ interface CVViewerProps {
 }
 
 const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
+	const { t } = useLanguage();
 	useEffect(() => {
 		if (isOpen) {
 			// Empêcher le scroll du body
@@ -49,7 +51,7 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 			<div className="cv-container bg-[#f7f3ec] rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col border border-[#e7d9c8]">
 				{/* Header */}
 				<div className="flex justify-between items-center p-6 border-b border-[#e7d9c8]">
-					<h2 className="text-2xl font-bold text-[#2e2a33]">Mon CV</h2>
+					<h2 className="text-2xl font-bold text-[#2e2a33]">{t("Mon CV")}</h2>
 					<div className="flex gap-3">
 						<button
 							onClick={handleDownload}
@@ -68,15 +70,11 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 									strokeWidth={2}
 									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
 								/>
-							</svg>
-							Télécharger
-						</button>
+							</svg>{t("Télécharger")}</button>
 						<button
 							onClick={onClose}
 							className="px-4 py-2.5 bg-[#e9e1d4] text-[#4f4656] rounded-lg hover:bg-[#ddd2c1] transition-colors font-medium"
-						>
-							✕ Fermer
-						</button>
+						>{t("✕ Fermer")}</button>
 					</div>
 				</div>
 
@@ -85,7 +83,7 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 					<iframe
 						src="/CV_NassefFadhlaoui.pdf"
 						className="w-full h-full rounded-lg border border-[#ddd2c1]"
-						title="CV Nassef Fadhlaoui"
+						title={t("CV Nassef Fadhlaoui")}
 					/>
 				</div>
 			</div>

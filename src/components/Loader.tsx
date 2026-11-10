@@ -1,3 +1,4 @@
+import { useLanguage } from "../i18n";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useState } from "react";
@@ -7,6 +8,7 @@ interface LoaderProps {
 }
 
 const Loader = ({ onComplete }: LoaderProps) => {
+	const { t } = useLanguage();
     const [progress, setProgress] = useState(0);
 
     useGSAP(() => {
@@ -73,9 +75,7 @@ const Loader = ({ onComplete }: LoaderProps) => {
                     <h1 className="text-6xl md:text-8xl font-bold text-dark-brown mb-4">
                         NF
                     </h1>
-                    <p className="text-xl md:text-2xl text-dark-brown/70 font-light">
-                        Portfolio en cours de chargement...
-                    </p>
+                    <p className="text-xl md:text-2xl text-dark-brown/70 font-light">{t("Portfolio en cours de chargement...")}</p>
                 </div>
 
                 {/* Barre de progression */}
