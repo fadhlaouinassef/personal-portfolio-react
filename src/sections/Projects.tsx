@@ -41,9 +41,15 @@ const Projects = () => {
 							category={t("Projet")}
 							details={
 								<>
+									<h3 className="detail-heading">{t("Avant")}</h3>
+									<p className="detail-copy">{t(project.before)}</p>
+									<h3 className="detail-heading">{t("Après")}</h3>
+									<p className="detail-copy">{t(project.after)}</p>
 									<h3 className="detail-heading">{t("Technologies utilisées")}</h3>
-									<div className="detail-tags">
-										{project.technologies.split(", ").map((technology) => <span key={technology}>{technology}</span>)}
+									<div className="detail-technology-list">
+										{project.technologyRoles.map(({ name, role }) => (
+											<div key={name}><strong>{name}</strong><p className="detail-copy">{t(role)}</p></div>
+										))}
 									</div>
 								</>
 							}

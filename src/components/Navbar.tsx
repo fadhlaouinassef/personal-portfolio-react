@@ -1,6 +1,7 @@
 import { useLanguage } from "../i18n";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import gsap from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import LanguageSwitch from "./LanguageSwitch";
 
 interface NavbarProps {
@@ -11,6 +12,19 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 	const { t } = useLanguage();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
+
+	const handleSectionNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+		const href = event.currentTarget.getAttribute("href");
+		if (!href?.startsWith("#")) return;
+		const target = document.querySelector<HTMLElement>(href);
+		if (!target) return;
+		event.preventDefault();
+		setIsMenuOpen(false);
+		const smoother = ScrollSmoother.get();
+		if (smoother) smoother.scrollTo(target, true, "top top");
+		else target.scrollIntoView({ behavior: "smooth", block: "start" });
+		window.history.replaceState(null, "", href);
+	};
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -51,26 +65,31 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 						<div className="flex items-center gap-4">
 							<a
 								href="#about"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>{t("À propos")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#skills"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>{t("Compétences")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#experience"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>{t("Expérience")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#projects"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>{t("Projets")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
 							<a
 								href="#certifications"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>
 								Certifications
@@ -78,6 +97,7 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 							</a>
 							<a
 								href="#education"
+								onClick={handleSectionNavigation}
 								className="text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 font-medium relative group"
 							>{t("Formation")}<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#7f3b2d] transition-all duration-300 group-hover:w-full"></span>
 							</a>
@@ -135,34 +155,34 @@ const Navbar = ({ onCVClick }: NavbarProps) => {
 						<div className="flex flex-col space-y-4">
 							<a
 								href="#about"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>{t("À propos")}</a>
 							<a
 								href="#skills"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>{t("Compétences")}</a>
 							<a
 								href="#experience"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>{t("Expérience")}</a>
 							<a
 								href="#projects"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>{t("Projets")}</a>
 							<a
 								href="#certifications"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>
 								Certifications
 							</a>
 							<a
 								href="#education"
-								onClick={() => setIsMenuOpen(false)}
+								onClick={handleSectionNavigation}
 								className="mobile-menu-item text-[#2e2a33] hover:text-[#7f3b2d] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-[#7f3b2d]/5 font-medium"
 							>{t("Formation")}</a>
 							

@@ -87,6 +87,7 @@ const Experience = () => {
 										category={t("Expérience professionnelle")}
 										details={
 											<dl className="detail-facts">
+											<div className="md:col-span-2"><dt>{t("Valeur ajoutée")}</dt><dd className="font-normal leading-relaxed">{t(exp.addedValue)}</dd></div>
 												<div><dt>{t("Entreprise / établissement")}</dt><dd>{exp.company}</dd></div>
 												<div><dt>{t("Période")}</dt><dd>{exp.period}</dd></div>
 												<div><dt>{t("Type d’expérience")}</dt><dd>{exp.type}</dd></div>

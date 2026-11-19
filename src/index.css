@@ -394,6 +394,11 @@ body::-webkit-scrollbar {
 .detail-summary .card-summary-description { line-height: 1.8; margin-top: 24px; }
 .detail-extra { border-top: 1px solid #e7d9c8; padding-top: 24px; margin-top: 24px; font-family: var(--font-paragraph); }
 .detail-heading { font-size: 0.8rem; font-weight: 700; color: #7f3b2d; margin-bottom: 12px; }
+.detail-copy { color: #4f4656; font-size: 0.9rem; line-height: 1.65; margin: 0 0 20px; }
+.detail-technology-list { display: grid; gap: 14px; }
+.detail-technology-list > div { padding: 14px 16px; border: 1px solid #7f3b2d22; border-radius: 14px; background: #7f3b2d0d; }
+.detail-technology-list strong { color: #2e2a33; font-size: 0.9rem; }
+.detail-technology-list .detail-copy { margin: 5px 0 0; }
 .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .detail-tags span { padding: 8px 14px; border-radius: 999px; background: #7f3b2d0d; border: 1px solid #7f3b2d22; font-size: 0.85rem; }
 .detail-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
