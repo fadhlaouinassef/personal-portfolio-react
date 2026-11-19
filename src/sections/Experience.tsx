@@ -86,12 +86,27 @@ const Experience = () => {
 										title={exp.title}
 										category={t("Expérience professionnelle")}
 										details={
-											<dl className="detail-facts">
-											<div className="md:col-span-2"><dt>{t("Valeur ajoutée")}</dt><dd className="font-normal leading-relaxed">{t(exp.addedValue)}</dd></div>
-												<div><dt>{t("Entreprise / établissement")}</dt><dd>{exp.company}</dd></div>
-												<div><dt>{t("Période")}</dt><dd>{exp.period}</dd></div>
-												<div><dt>{t("Type d’expérience")}</dt><dd>{exp.type}</dd></div>
-											</dl>
+											<>
+												<h3 className="detail-heading">{t("Problème ou besoin de départ")}</h3>
+												<p className="detail-copy">{t(exp.problem)}</p>
+												<h3 className="detail-heading">{t("Objectif de la mission")}</h3>
+												<p className="detail-copy">{t(exp.objective)}</p>
+												<h3 className="detail-heading">{t("Réalisation")}</h3>
+												<p className="detail-copy">{t(exp.description)}</p>
+												<h3 className="detail-heading">{t("Technologies et utilisation")}</h3>
+												<div className="detail-technology-list mb-6">
+													{exp.technologyRoles.map(({ name, role }) => (
+														<div key={name}><strong>{name}</strong><p className="detail-copy">{t(role)}</p></div>
+													))}
+												</div>
+												<h3 className="detail-heading">{t("Valeur ajoutée")}</h3>
+												<p className="detail-copy">{t(exp.addedValue)}</p>
+												<dl className="detail-facts">
+													<div><dt>{t("Entreprise / établissement")}</dt><dd>{exp.company}</dd></div>
+													<div><dt>{t("Période")}</dt><dd>{exp.period}</dd></div>
+													<div><dt>{t("Type d’expérience")}</dt><dd>{exp.type}</dd></div>
+												</dl>
+											</>
 										}
 										className="space-y-3 p-6 bg-white/75 rounded-2xl border border-[#eadac6] shadow-[0_10px_26px_rgba(34,33,35,0.09)] hover:bg-white hover:shadow-[0_16px_36px_rgba(34,33,35,0.14)] transition-shadow duration-300"
 									>

@@ -4,8 +4,8 @@ import { translate as t } from "./translations";
 
 const english = {
 	skillCategories: french.skillCategories.map(item => ({ ...item, name: t(item.name), skills: item.skills.map(t) })),
-	experienceList: french.experienceList.map(item => ({ ...item, title: t(item.title), period: t(item.period), description: t(item.description), addedValue: t(item.addedValue), type: t(item.type) })),
-	projectsList: french.projectsList.map(item => ({ ...item, title: t(item.title), year: t(item.year), description: t(item.description), before: t(item.before), after: t(item.after), technologyRoles: item.technologyRoles.map(role => ({ ...role, role: t(role.role) })) })),
+	experienceList: french.experienceList.map(item => ({ ...item, title: t(item.title), period: t(item.period), description: t(item.description), problem: t(item.problem), objective: t(item.objective), addedValue: t(item.addedValue), technologyRoles: item.technologyRoles.map(role => ({ ...role, role: t(role.role) })), type: t(item.type) })),
+	projectsList: french.projectsList.map(item => ({ ...item, title: t(item.title), year: t(item.year), description: t(item.description), objective: t(item.objective), before: t(item.before), after: t(item.after), technologyRoles: item.technologyRoles.map(role => ({ ...role, role: t(role.role) })) })),
 	educationList: french.educationList.map(item => ({ ...item, degree: t(item.degree), school: t(item.school), period: t(item.period), location: t(item.location) })),
 	certificationsList: french.certificationsList.map(item => ({ ...item, description: t(item.description), skills: item.skills.map(t), sourceLabel: t(item.sourceLabel) })),
 	languagesList: french.languagesList.map(t),

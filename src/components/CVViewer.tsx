@@ -8,7 +8,9 @@ interface CVViewerProps {
 }
 
 const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
-	const { t } = useLanguage();
+	const { t, language } = useLanguage();
+	const cvFile = language === "fr" ? "/FadhlaouiNassef_CV_FR.pdf" : "/FadhlaouiNassef_CV_EN.pdf";
+	const downloadName = language === "fr" ? "CV_NassefFadhlaoui_FR.pdf" : "CV_NassefFadhlaoui_EN.pdf";
 	useEffect(() => {
 		if (isOpen) {
 			// Empêcher le scroll du body
@@ -37,8 +39,8 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 
 	const handleDownload = () => {
 		const link = document.createElement("a");
-		link.href = "/CV_NassefFadhlaoui.pdf";
-		link.download = "CV_NassefFadhlaoui.pdf";
+		link.href = cvFile;
+		link.download = downloadName;
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -81,7 +83,8 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 				{/* PDF Viewer */}
 				<div className="flex-1 overflow-auto p-4 bg-[#fbf8f3]">
 					<iframe
-						src="/CV_NassefFadhlaoui.pdf"
+						key={cvFile}
+						src={cvFile}
 						className="w-full h-full rounded-lg border border-[#ddd2c1]"
 						title={t("CV Nassef Fadhlaoui")}
 					/>

@@ -41,11 +41,13 @@ const Projects = () => {
 							category={t("Projet")}
 							details={
 								<>
-									<h3 className="detail-heading">{t("Avant")}</h3>
+										<h3 className="detail-heading">{t("Problème avant le projet")}</h3>
 									<p className="detail-copy">{t(project.before)}</p>
-									<h3 className="detail-heading">{t("Après")}</h3>
+										<h3 className="detail-heading">{t("Objectif du projet")}</h3>
+										<p className="detail-copy">{t(project.objective)}</p>
+										<h3 className="detail-heading">{t("Résultat et valeur ajoutée")}</h3>
 									<p className="detail-copy">{t(project.after)}</p>
-									<h3 className="detail-heading">{t("Technologies utilisées")}</h3>
+										<h3 className="detail-heading">{t("Réalisation et rôle des technologies")}</h3>
 									<div className="detail-technology-list">
 										{project.technologyRoles.map(({ name, role }) => (
 											<div key={name}><strong>{name}</strong><p className="detail-copy">{t(role)}</p></div>
